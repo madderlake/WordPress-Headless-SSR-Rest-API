@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container } from 'reactstrap';
-//import Row from "react-bootstrap/Row";
 import ContentBlock from '../../utilities/ContentBlock';
 import './index.scss';
 

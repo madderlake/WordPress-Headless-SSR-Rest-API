@@ -7171,9 +7171,9 @@ a.text-dark:hover, a.text-dark:focus {
   --font-size-med: calc(1.5rem + 0.25vw);
   --font-size-lg: calc(2rem + 0.25vw);
   --font-size-xlg: calc(3rem + 0.25vw);
-  --font-family: ProximaNova, 'Helvetica Neue', sans-serif;
+  --font-family-body: 'Noto Serif TC', serif;
   --font-family-cursive: Scriptina, cursive;
-  --font-family-heading: Novecento;
+  --font-family-heading: Novecento, 'Helvetica Neue', sans-serif;
   --primary-color: #ed1249;
   --primary-light: #fcdbe4;
   --secondary-color: #2b93df;
@@ -7195,9 +7195,9 @@ a.text-dark:hover, a.text-dark:focus {
   --font-size-med: calc(1.5rem + 0.25vw);
   --font-size-lg: calc(2rem + 0.25vw);
   --font-size-xlg: calc(3rem + 0.25vw);
-  --font-family: ProximaNova, 'Helvetica Neue', sans-serif;
+  --font-family-body: 'Noto Serif TC', serif;
   --font-family-cursive: Scriptina, cursive;
-  --font-family-heading: Novecento;
+  --font-family-heading: Novecento, 'Helvetica Neue', sans-serif;
   --primary-color: #ed1249;
   --primary-light: #fcdbe4;
   --secondary-color: #2b93df;
@@ -7247,8 +7247,8 @@ a.text-dark:hover, a.text-dark:focus {
 
 @font-face {
   font-family: 'Novecento';
-  src: url(/assets/fonts/novecentowide-light.eot);
-  src: url(/assets/fonts/novecentowide-light.eot#iefix) format("embedded-opentype"), url(/assets/fonts/novecentowide-light.woff) format("woff"), url(/assets/fonts/novecentowide-light.ttf) format("truetype"), url(/assets/fonts/novecentowide-light.svg) format("svg");
+  src: url(../assets/fonts/novecentowide-light.eot);
+  src: url(../assets/fonts/novecentowide-light.eot#iefix) format("embedded-opentype"), url(../assets/fonts/novecentowide-light.woff) format("woff"), url(../assets/fonts/novecentowide-light.ttf) format("truetype"), url(../assets/fonts/novecentowide-light.svg) format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -8327,7 +8327,7 @@ html {
 body {
   font-size: var(--base-font-size);
   font-size: 1rem;
-  font-family: var(--font-family);
+  font-family: var(--font-family-body);
   color: var(--basic-black);
   padding-top: var(--header-allowance); }
 
@@ -8372,6 +8372,7 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: var(--font-family-heading);
   margin: 0.5em 0; }
 
 img {

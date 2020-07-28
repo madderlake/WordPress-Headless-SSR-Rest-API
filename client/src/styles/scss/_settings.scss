@@ -18,9 +18,11 @@ $scale-factor: 1.25;
   --font-size-med: calc(1.5rem + 0.25vw);
   --font-size-lg: calc(2rem + 0.25vw);
   --font-size-xlg: calc(3rem + 0.25vw);
-  --font-family: ProximaNova, 'Helvetica Neue', sans-serif;
+  //--font-family-body: ProximaNova, 'Helvetica Neue', sans-serif;
+  --font-family-body: 'Noto Serif TC', serif;
   --font-family-cursive: Scriptina, cursive;
-  --font-family-heading: Novecento;
+  //--font-family-heading: ProximaNova, 'Helvetica Neue', sans-serif;
+  --font-family-heading: Novecento, 'Helvetica Neue', sans-serif;
   //Colors
   --primary-color: #{$primary-color};
   --primary-light: #{$primary-light};

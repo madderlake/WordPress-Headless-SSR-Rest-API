@@ -4,7 +4,7 @@ html {
 body {
   font-size: var(--base-font-size);
   font-size: 1rem;
-  font-family: var(--font-family);
+  font-family: var(--font-family-body);
   color: var(--basic-black);
   padding-top: var(--header-allowance);
 }
@@ -66,6 +66,7 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: var(--font-family-heading);
   margin: 0.5em 0;
 }
 
