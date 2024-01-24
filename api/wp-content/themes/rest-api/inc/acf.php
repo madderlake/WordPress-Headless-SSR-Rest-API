@@ -100,10 +100,3 @@ add_action('acf/input/admin_head', 'mah_acf_admin_head');
 //   //remove_post_type_support( 'post', 'editor' );
 //   //remove_post_type_support( 'page', 'editor' );
 // };
-
-add_filter( 'acf/location/rule_match/page_template', 'ignore_acf_location_rules_for_graphql', 10, 4 );
-function ignore_acf_location_rules_for_graphql( $result, $rule, $screen, $field_group ) {
-  if (isset($screen['wp-graphql-acf']) && $screen['wp-graphql-acf'] == true) return true;
-
-  return $result;
-}
