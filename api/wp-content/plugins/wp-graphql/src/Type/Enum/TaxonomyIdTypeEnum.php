@@ -3,8 +3,13 @@
 namespace WPGraphQL\Type\Enum;
 
 class TaxonomyIdTypeEnum {
-	public static function register_type() {
 
+	/**
+	 * Register the TaxonomyIdTypeEnum Type to the Schema
+	 *
+	 * @return void
+	 */
+	public static function register_type() {
 		register_graphql_enum_type(
 			'TaxonomyIdTypeEnum',
 			[
@@ -23,6 +28,5 @@ class TaxonomyIdTypeEnum {
 				],
 			]
 		);
-
 	}
 }

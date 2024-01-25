@@ -2,7 +2,6 @@
 
 namespace WPGraphQL\Data\Loader;
 
-use GraphQL\Deferred;
 use WPGraphQL\Model\Comment;
 
 /**
@@ -13,23 +12,30 @@ use WPGraphQL\Model\Comment;
 class CommentLoader extends AbstractDataLoader {
 
 	/**
-	 * Given array of keys, loads and returns a map consisting of keys from `keys` array and loaded
-	 * comments as the values
+	 * {@inheritDoc}
 	 *
-	 * Note that order of returned values must match exactly the order of keys.
-	 * If some entry is not available for given key - it must include null for the missing key.
-	 *
-	 * For example:
-	 * loadKeys(['a', 'b', 'c']) -> ['a' => 'value1, 'b' => null, 'c' => 'value3']
-	 *
-	 * @param array $keys
-	 *
-	 * @return array
+	 * @return ?\WPGraphQL\Model\Comment
 	 * @throws \Exception
 	 */
-	public function loadKeys( array $keys = [] ) {
+	protected function get_model( $entry, $key ) {
+		if ( ! $entry instanceof \WP_Comment ) {
+			return null;
+		}
 
-		$loaded = [];
+		$comment_model = new Comment( $entry );
+		if ( empty( $comment_model->fields ) ) {
+			return null;
+		}
+
+		return $comment_model;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param int[] $keys Array of IDs to load
+	 */
+	public function loadKeys( array $keys = [] ) {
 
 		/**
 		 * Prepare the args for the query. We're provided a specific set of IDs of comments
@@ -49,36 +55,10 @@ class CommentLoader extends AbstractDataLoader {
 		 */
 		$query = new \WP_Comment_Query( $args );
 		$query->get_comments();
-
-		if ( empty( $keys ) ) {
-			return $keys;
-		}
-
-		/**
-		 * Loop pver the keys and return an array of loaded_terms, where the key is the IDand the value
-		 * is the comment object, passed through the Model layer
-		 */
+		$loaded = [];
 		foreach ( $keys as $key ) {
-
-			/**
-			 * Get the comment from the cache
-			 */
-			$comment_object = \WP_Comment::get_instance( $key );
-
-			/**
-			 * Return the instance through the Model Layer to ensure we only return
-			 * values the consumer has access to.
-			 */
-			$comment = new Comment( $comment_object );
-			if ( ! isset( $comment->fields ) || empty( $comment->fields ) ) {
-				$loaded[ $key ] = null;
-			} else {
-				$loaded[ $key ] = $comment;
-			}
+			$loaded[ $key ] = \WP_Comment::get_instance( $key );
 		}
-
-		return ! empty( $loaded ) ? $loaded : [];
-
+		return $loaded;
 	}
-
 }

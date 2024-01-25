@@ -9,14 +9,25 @@ class CursorBuilder {
 
 	/**
 	 * The field by which the cursor should order the results
+	 *
+	 * @var array<string,mixed>[]
 	 */
 	public $fields;
 
 	/**
 	 * Default comparison operator. < or >
+	 *
+	 * @var string
 	 */
-	public $compare = null;
+	public $compare;
 
+	/**
+	 * CursorBuilder constructor.
+	 *
+	 * @param string $compare
+	 *
+	 * @return void
+	 */
 	public function __construct( $compare = '>' ) {
 		$this->compare = $compare;
 		$this->fields  = [];
@@ -24,38 +35,71 @@ class CursorBuilder {
 
 	/**
 	 * Add ordering field. The order you call this method matters. First field
-	 * will be the primary field and latters ones will be used if the primary
+	 * will be the primary field and latter ones will be used if the primary
 	 * field has duplicate values
 	 *
-	 * @param string $key   database colum
-	 * @param string $value value from the current cursor
-	 * @param string $type  type cast
-	 * @param string $order custom order
+	 * @param string           $key           database column
+	 * @param mixed|string|int $value         value from the current cursor
+	 * @param string|null      $type          type cast
+	 * @param string|null      $order         custom order
+	 * @param object|null      $object_cursor The Cursor class
+	 *
+	 * @return void
 	 */
-	public function add_field( $key, $value, $type = null, $order = null ) {
+	public function add_field( string $key, $value, string $type = null, string $order = null, $object_cursor = null ) {
+
 		/**
-		 * This only input for variables which are used in the SQL generation. So
-		 * escape them here.
+		 * Filters the field used for ordering when cursors are used for pagination
+		 *
+		 * @param array<string,mixed>                  $field          The field key, value, type and order
+		 * @param \WPGraphQL\Data\Cursor\CursorBuilder $cursor_builder The CursorBuilder class
+		 * @param ?object                              $object_cursor  The Cursor class
 		 */
-		$this->fields[] = [
-			'key'   => esc_sql( $key ),
-			'value' => esc_sql( $value ),
-			'type'  => esc_sql( $type ),
-			'order' => esc_sql( $order ),
-		];
+		$field = apply_filters(
+			'graphql_cursor_ordering_field',
+			[
+				'key'   => esc_sql( $key ),
+				'value' => esc_sql( $value ),
+				'type'  => ! empty( $type ) ? esc_sql( $type ) : '',
+				'order' => ! empty( $order ) ? esc_sql( $order ) : '',
+			],
+			$this,
+			$object_cursor
+		);
+
+		// Bail if the filtered field comes back empty
+		if ( empty( $field ) ) {
+			return;
+		}
+
+		// Bail if the filtered field doesn't come back as an array
+		if ( ! is_array( $field ) ) {
+			return;
+		}
+
+		$escaped_field = [];
+
+		// Escape the filtered array
+		foreach ( $field as $field_key => $value ) {
+			$escaped_field[ $field_key ] = esc_sql( $value );
+		}
+
+		$this->fields[] = $escaped_field;
 	}
 
 	/**
 	 * Returns true at least one ordering field has been added
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function has_fields() {
 		return count( $this->fields ) > 0;
 	}
 
 	/**
-	 * Generate the final SQL string to be appended to WHERE claise
+	 * Generate the final SQL string to be appended to WHERE clause
+	 *
+	 * @param mixed|array<string,mixed>[]|null $fields
 	 *
 	 * @return string
 	 */
@@ -84,7 +128,7 @@ class CursorBuilder {
 		if ( 'ID' !== $type ) {
 			$cast = $this->get_cast_for_type( $type );
 			if ( 'CHAR' === $cast ) {
-				$value = "'$value'";
+				$value = '"' . wp_unslash( $value ) . '"';
 			} elseif ( $cast ) {
 				$key   = "CAST( $key as $cast )";
 				$value = "CAST( '$value' as $cast )";
@@ -92,12 +136,14 @@ class CursorBuilder {
 		}
 
 		if ( count( $fields ) === 1 ) {
-			return " {$key} {$compare} {$value}";
+			return " {$key} {$compare} {$value} ";
 		}
 
 		$nest = $this->to_sql( \array_slice( $fields, 1 ) );
 
-		return " {$key} {$compare}= {$value} AND ( {$key} {$compare} {$value} OR ( {$nest} ) ) ";
+		$sql = ' %1$s %2$s= %3$s AND ( %1$s %2$s %3$s OR ( %4$s ) ) ';
+
+		return sprintf( $sql, $key, $compare, $value, $nest );
 	}
 
 

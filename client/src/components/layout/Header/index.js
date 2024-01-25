@@ -7,22 +7,22 @@ import {
   Nav,
   NavItem,
   Container,
-  Collapse
+  Collapse,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import api from '../../../api';
-import './index.css';
+import './index.scss';
 import Logo from '../../../assets/imgs/mah.svg';
 
-const mapStateToProps = state => ({
-  mainMenu: state.api.menus.main
+const mapStateToProps = (state) => ({
+  mainMenu: state.api.menus.main,
 });
 
-const mapDispatchToProps = dispatch => ({
-  loadMenu: menu => dispatch({ type: 'LOAD_MENU', payload: menu })
+const mapDispatchToProps = (dispatch) => ({
+  loadMenu: (menu) => dispatch({ type: 'LOAD_MENU', payload: menu }),
 });
-
+console.log(api.menus);
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -32,12 +32,12 @@ class Header extends Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      isOpen: false
+      isOpen: false,
     };
   }
   toggle() {
     this.setState({
-      isOpen: !this.state.isOpen
+      isOpen: !this.state.isOpen,
     });
   }
 
@@ -50,15 +50,14 @@ class Header extends Component {
           <NavItem key={item.ID}>
             <Link
               to={item.url}
-              className={`nav-link${item.url === pageURI ? ' active' : ''}`}
-            >
+              className={`nav-link${item.url === pageURI ? ' active' : ''}`}>
               {item.title}
             </Link>
           </NavItem>
         );
       });
     }
-
+    console.log(this.props);
     return null;
   }
 

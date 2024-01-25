@@ -2,7 +2,6 @@
 
 namespace WPGraphQL\Data\Loader;
 
-use GraphQL\Deferred;
 use WPGraphQL\Model\Menu;
 use WPGraphQL\Model\Term;
 
@@ -14,22 +13,46 @@ use WPGraphQL\Model\Term;
 class TermObjectLoader extends AbstractDataLoader {
 
 	/**
-	 * Given array of keys, loads and returns a map consisting of keys from `keys` array and loaded
-	 * posts as the values
+	 * {@inheritDoc}
 	 *
-	 * Note that order of returned values must match exactly the order of keys.
-	 * If some entry is not available for given key - it must include null for the missing key.
+	 * @param mixed|\WP_Term $entry The Term Object
 	 *
-	 * For example:
-	 * loadKeys(['a', 'b', 'c']) -> ['a' => 'value1, 'b' => null, 'c' => 'value3']
-	 *
-	 * @param array $keys
-	 *
-	 * @return array
+	 * @return \WPGraphQL\Model\Term|\WPGraphQL\Model\Menu|null
 	 * @throws \Exception
 	 */
-	public function loadKeys( array $keys ) {
+	protected function get_model( $entry, $key ) {
+		if ( is_a( $entry, 'WP_Term' ) ) {
 
+			/**
+			 * For nav_menu terms, we want to pass through a different model
+			 */
+			if ( 'nav_menu' === $entry->taxonomy ) {
+				$menu = new Menu( $entry );
+				if ( empty( $menu->fields ) ) {
+					return null;
+				} else {
+					return $menu;
+				}
+			} else {
+				$term = new Term( $entry );
+				if ( empty( $term->fields ) ) {
+					return null;
+				} else {
+					return $term;
+				}
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param int[] $keys
+	 *
+	 * @return array<int,\WP_Term|\WP_Error|null>
+	 */
+	public function loadKeys( array $keys ) {
 		if ( empty( $keys ) ) {
 			return $keys;
 		}
@@ -55,12 +78,7 @@ class TermObjectLoader extends AbstractDataLoader {
 			return [];
 		}
 
-		$terms_by_id = [];
-		foreach ( $terms as $term ) {
-			$terms_by_id[ $term->term_id ] = $term;
-		}
-
-		$loaded_terms = [];
+		$loaded = [];
 
 		/**
 		 * Loop over the keys and return an array of loaded_terms, where the key is the ID and the value is
@@ -73,37 +91,9 @@ class TermObjectLoader extends AbstractDataLoader {
 			 * them from the cache to pass through the model layer, or return null if the
 			 * object isn't in the cache, meaning it didn't come back when queried.
 			 */
-			$term_object = get_term( (int) $key );
-
-			$loaded_terms[ $key ] = null;
-
-			if ( is_a( $term_object, 'WP_Term' ) ) {
-
-				/**
-				 * For nav_menu_item terms, we want to pass through a different model
-				 */
-				if ( 'nav_menu' === $term_object->taxonomy ) {
-
-					$menu = new Menu( $term_object );
-					if ( ! isset( $menu->fields ) || empty( $menu->fields ) ) {
-						$loaded_terms[ $key ] = null;
-					} else {
-						$loaded_terms[ $key ] = $menu;
-					}
-				} else {
-
-					$term = new Term( $term_object );
-					if ( ! isset( $term->fields ) || empty( $term->fields ) ) {
-						$loaded_terms[ $key ] = null;
-					} else {
-						$loaded_terms[ $key ] = $term;
-					}
-				}
-			}
+			$loaded[ $key ] = get_term( (int) $key );
 		}
 
-		return ! empty( $loaded_terms ) ? $loaded_terms : [];
-
+		return $loaded;
 	}
-
 }

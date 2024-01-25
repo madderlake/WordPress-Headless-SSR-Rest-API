@@ -11,19 +11,30 @@ use WPGraphQL\Model\PostType;
 class PostTypeLoader extends AbstractDataLoader {
 
 	/**
-	 * @param array $keys
+	 * {@inheritDoc}
 	 *
-	 * @return array
-	 * @throws \Exception
+	 * @param mixed|\WP_Post_Type $entry The Post Type Object
+	 *
+	 * @return \WPGraphQL\Model\PostType
+	 */
+	protected function get_model( $entry, $key ) {
+		return new PostType( $entry );
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @param string[] $keys
+	 * @return array<string,\WP_Post|null>
 	 */
 	public function loadKeys( array $keys ) {
-		$post_types = get_post_types( [ 'show_in_graphql' => true ], 'objects' );
+		$post_types = \WPGraphQL::get_allowed_post_types( 'objects' );
 
 		$loaded = [];
 		if ( ! empty( $post_types ) && is_array( $post_types ) ) {
 			foreach ( $keys as $key ) {
 				if ( isset( $post_types[ $key ] ) ) {
-					$loaded[ $key ] = new PostType( $post_types[ $key ] );
+					$loaded[ $key ] = $post_types[ $key ];
 				} else {
 					$loaded[ $key ] = null;
 				}
@@ -31,6 +42,5 @@ class PostTypeLoader extends AbstractDataLoader {
 		}
 
 		return $loaded;
-
 	}
 }

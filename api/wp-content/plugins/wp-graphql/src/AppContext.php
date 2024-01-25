@@ -7,7 +7,6 @@ use WPGraphQL\Data\Loader\CommentAuthorLoader;
 use WPGraphQL\Data\Loader\CommentLoader;
 use WPGraphQL\Data\Loader\EnqueuedScriptLoader;
 use WPGraphQL\Data\Loader\EnqueuedStylesheetLoader;
-use WPGraphQL\Data\Loader\MenuItemLoader;
 use WPGraphQL\Data\Loader\PluginLoader;
 use WPGraphQL\Data\Loader\PostObjectLoader;
 use WPGraphQL\Data\Loader\PostTypeLoader;
@@ -16,7 +15,7 @@ use WPGraphQL\Data\Loader\TermObjectLoader;
 use WPGraphQL\Data\Loader\ThemeLoader;
 use WPGraphQL\Data\Loader\UserLoader;
 use WPGraphQL\Data\Loader\UserRoleLoader;
-use WPGraphQL\Model\Term;
+use WPGraphQL\Data\NodeResolver;
 
 /**
  * Class AppContext
@@ -46,39 +45,51 @@ class AppContext {
 	public $viewer;
 
 	/**
+	 * @var \WPGraphQL\Registry\TypeRegistry
+	 */
+	public $type_registry;
+
+	/**
 	 * Stores everything from the $_REQUEST global
 	 *
-	 * @var \mixed $request
+	 * @var mixed $request
 	 */
 	public $request;
 
 	/**
 	 * Stores additional $config properties
 	 *
-	 * @var \mixed $config
+	 * @var mixed $config
 	 */
 	public $config;
 
 	/**
 	 * Passes context about the current connection being resolved
 	 *
-	 * @var mixed| String | null
+	 * @var mixed|string|null
 	 */
 	public $currentConnection = null;
 
 	/**
 	 * Passes context about the current connection
 	 *
-	 * @var array
+	 * @var array<string,mixed>
 	 */
 	public $connectionArgs = [];
 
 	/**
 	 * Stores the loaders for the class
 	 *
-	 * @var array
+	 * @var array<string,\WPGraphQL\Data\Loader\AbstractDataLoader>
 	 */
 	public $loaders = [];
+
+	/**
+	 * Instance of the NodeResolver class to resolve nodes by URI
+	 *
+	 * @var \WPGraphQL\Data\NodeResolver
+	 */
+	public $node_resolver;
 
 	/**
 	 * AppContext constructor.
@@ -93,8 +104,8 @@ class AppContext {
 			'comment'             => new CommentLoader( $this ),
 			'enqueued_script'     => new EnqueuedScriptLoader( $this ),
 			'enqueued_stylesheet' => new EnqueuedStylesheetLoader( $this ),
-			'nav_menu_item'       => new MenuItemLoader( $this ),
 			'plugin'              => new PluginLoader( $this ),
+			'nav_menu_item'       => new PostObjectLoader( $this ),
 			'post'                => new PostObjectLoader( $this ),
 			'post_type'           => new PostTypeLoader( $this ),
 			'taxonomy'            => new TaxonomyLoader( $this ),
@@ -115,6 +126,13 @@ class AppContext {
 		$this->loaders = apply_filters( 'graphql_data_loaders', $loaders, $this );
 
 		/**
+		 * This sets up the NodeResolver to allow nodes to be resolved by URI
+		 *
+		 * @param \WPGraphQL\AppContext $app_context The AppContext instance
+		 */
+		$this->node_resolver = new NodeResolver( $this );
+
+		/**
 		 * This filters the config for the AppContext.
 		 *
 		 * This can be used to store additional context config, which is available to resolvers
@@ -130,11 +148,12 @@ class AppContext {
 	 *
 	 * @param string $key The name of the loader to get
 	 *
-	 * @return mixed
+	 * @return \WPGraphQL\Data\Loader\AbstractDataLoader|mixed
 	 *
 	 * @deprecated Use get_loader instead.
 	 */
 	public function getLoader( $key ) {
+		_deprecated_function( __METHOD__, '0.8.4', self::class . '::get_loader()' );
 		return $this->get_loader( $key );
 	}
 
@@ -143,11 +162,13 @@ class AppContext {
 	 *
 	 * @param string $key The name of the loader to get
 	 *
-	 * @return mixed
+	 * @return \WPGraphQL\Data\Loader\AbstractDataLoader|mixed
+	 * @throws \GraphQL\Error\UserError If the loader is not found.
 	 */
 	public function get_loader( $key ) {
 		if ( ! array_key_exists( $key, $this->loaders ) ) {
-			throw new UserError( sprintf( __( 'No loader assigned to the key %s', 'wp-graphql' ), $key ) );
+			// translators: %s is the key of the loader that was not found.
+			throw new UserError( esc_html( sprintf( __( 'No loader assigned to the key %s', 'wp-graphql' ), $key ) ) );
 		}
 
 		return $this->loaders[ $key ];
@@ -156,18 +177,18 @@ class AppContext {
 	/**
 	 * Returns the $args for the connection the field is a part of
 	 *
-	 * @return array|mixed
-	 *
 	 * @deprecated use get_connection_args() instead
+	 * @return mixed[]|mixed
 	 */
 	public function getConnectionArgs() {
+		_deprecated_function( __METHOD__, '0.8.4', self::class . '::get_connection_args()' );
 		return $this->get_connection_args();
 	}
 
 	/**
 	 * Returns the $args for the connection the field is a part of
 	 *
-	 * @return array|mixed
+	 * @return mixed[]|mixed
 	 */
 	public function get_connection_args() {
 		return isset( $this->currentConnection ) && isset( $this->connectionArgs[ $this->currentConnection ] ) ? $this->connectionArgs[ $this->currentConnection ] : [];
@@ -176,19 +197,17 @@ class AppContext {
 	/**
 	 * Returns the current connection
 	 *
-	 * @return mixed|null|String
+	 * @return mixed|string|null
 	 */
 	public function get_current_connection() {
 		return isset( $this->currentConnection ) ? $this->currentConnection : null;
-
 	}
 
 	/**
-	 * @return mixed|null|String
+	 * @return mixed|string|null
 	 * @deprecated use get_current_connection instead.
 	 */
 	public function getCurrentConnection() {
 		return $this->get_current_connection();
 	}
-
 }

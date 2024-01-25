@@ -27,12 +27,14 @@ class Mutation {
      * An input object will be created containing the input fields, and an
      * object will be created containing the output fields.
      *
-     * mutateAndGetPayload will receieve an Object with a key for each
+     * mutateAndGetPayload will receive an Object with a key for each
      * input field, and it should return an Object with a key for each
      * output field. It may return synchronously, or return a Promise.
      *
      * type MutationConfig = {
      *   name: string,
+     *   description?: string,
+     *   deprecationReason?: string,
      *   inputFields: InputObjectConfigFieldMap,
      *   outputFields: GraphQLFieldConfigMap,
      *   mutateAndGetPayload: mutationFn,
@@ -49,7 +51,7 @@ class Mutation {
             $inputFieldsResolved = self::resolveMaybeThunk($inputFields);
             return array_merge($inputFieldsResolved !== null ? $inputFieldsResolved : [], [
                 'clientMutationId' => [
-                    'type' => Type::nonNull(Type::string())
+                    'type' => Type::string()
                 ]
             ]);
         };
@@ -58,7 +60,7 @@ class Mutation {
             $outputFieldsResolved = self::resolveMaybeThunk($outputFields);
             return array_merge($outputFieldsResolved !== null ? $outputFieldsResolved : [], [
                 'clientMutationId' => [
-                    'type' => Type::nonNull(Type::string())
+                    'type' => Type::string()
                 ]
             ]);
         };
@@ -73,7 +75,7 @@ class Mutation {
             'fields' => $augmentedInputFields
         ]);
 
-        return [
+        $definition = [
             'type' => $outputType,
             'args' => [
                 'input' => [
@@ -82,10 +84,17 @@ class Mutation {
             ],
             'resolve' => function ($query, $args, $context, ResolveInfo $info) use ($mutateAndGetPayload) {
                 $payload = call_user_func($mutateAndGetPayload, $args['input'], $context, $info);
-                $payload['clientMutationId'] = $args['input']['clientMutationId'];
+                $payload['clientMutationId'] = isset($args['input']['clientMutationId']) ? $args['input']['clientMutationId'] : null;
                 return $payload;
             }
         ];
+	    if (array_key_exists('description', $config)){
+		    $definition['description'] = $config['description'];
+	    }
+	    if (array_key_exists('deprecationReason', $config)){
+		    $definition['deprecationReason'] = $config['deprecationReason'];
+	    }
+        return $definition;
     }
 
     /**

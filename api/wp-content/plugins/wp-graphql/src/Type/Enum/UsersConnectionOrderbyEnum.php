@@ -3,8 +3,13 @@
 namespace WPGraphQL\Type\Enum;
 
 class UsersConnectionOrderbyEnum {
-	public static function register_type() {
 
+	/**
+	 * Register the UsersConnectionOrderbyEnum Type to the Schema
+	 *
+	 * @return void
+	 */
+	public static function register_type() {
 		register_graphql_enum_type(
 			'UsersConnectionOrderbyEnum',
 			[
@@ -45,6 +50,5 @@ class UsersConnectionOrderbyEnum {
 				],
 			]
 		);
-
 	}
 }

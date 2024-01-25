@@ -16,7 +16,7 @@
     "react-helmet": "^5.2.0",
     "react-loadable": "^5.5.0",
     "react-redux": "^5.1.1",
-    "react-router-dom": "^4.3.1",
+    "react-router-dom": "^5.0.0",
     "react-scripts": "1.1.1",
     "react-transition-group": "^2.5.1",
     "reactstrap": "^9.2.1",
@@ -26,8 +26,8 @@
     "superagent-promise": "^1.1.0"
   },
   "scripts": {
-    "build-css": "sass --no-source-map -w src/styles/scss/styles.scss src/styles/scss/main.css",
-    "watch:sass": "sass --no-source-map --style=compressed  src/styles/scss/styles.scss src/styles/scss/index.css",
+    "build-css": "sass --no-source-map --style=compressed src/styles/scss/styles.scss src/styles/scss/main.css",
+    "watch:sass": "sass --no-source-map -w  src/styles/scss/styles.scss src/styles/scss/index.css",
     "start": "npm-run-all -p serve watch:sass start-js",
     "build": "npm-run-all build-css build-js",
     "start-js": "react-scripts start",
