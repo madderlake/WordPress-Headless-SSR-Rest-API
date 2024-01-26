@@ -76,9 +76,8 @@ class Header extends Component {
               <Nav
                 className="navbar"
                 fill
-                // activeKey={this.selectedKey}
-                // onSelect={this._onSelect}
-              >
+                key={this.selectedKey}
+                onSelect={this._onSelect}>
                 {this.buildMenu()}
               </Nav>
             </Container>

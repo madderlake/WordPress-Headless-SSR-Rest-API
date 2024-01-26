@@ -9,9 +9,9 @@ import { Helmet } from 'react-helmet';
 import postTypes from '../src/post-types';
 import { arrayToObject } from '../src/utilities/convertData';
 
-import api from '../src/api';
+// import api from '../src/api';
 import App from '../src/App';
-console.log(api);
+
 const path = require('path');
 const fs = require('fs');
 
@@ -77,10 +77,8 @@ const filterDataStore = (state, url) => {
 export default (store) => (req, res, next) => {
   // point to HTML from CRA
   const filePath = path.resolve(__dirname, '..', 'build', 'index.html');
-  console.log(req, res);
   fs.readFile(filePath, 'utf8', (err, htmlData) => {
     if (err) {
-      console.log('err', err);
       return res.status(404).end();
     }
 

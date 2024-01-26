@@ -43,15 +43,15 @@ const templates = {
   post: AsyncPost,
   sidebar: AsyncSidebar,
   flex: AsyncFlex,
-  blog: AsyncBlog
+  blog: AsyncBlog,
 };
 
-const mapStateToProps = state => ({
-  data: state.api.data
+const mapStateToProps = (state) => ({
+  data: state.api.data,
 });
 
-const mapDispatchToProps = dispatch => ({
-  load: data => dispatch({ type: 'LOAD_DATA_BY_SLUG', payload: data })
+const mapDispatchToProps = (dispatch) => ({
+  load: (data) => dispatch({ type: 'LOAD_DATA_BY_SLUG', payload: data }),
 });
 
 class LoadTemplate extends Component {
@@ -64,9 +64,8 @@ class LoadTemplate extends Component {
 
       // Slug will either come from a prop or a URL param from Router
       // Necessary because some slugs come from URL params
-      slug: this.props.slug ? this.props.slug : this.props.match.params.slug
+      slug: this.props.slug ? this.props.slug : this.props.match.params.slug,
     };
-    console.log(this.state);
     this.fetchData();
   }
 
@@ -75,7 +74,7 @@ class LoadTemplate extends Component {
       let params = [];
 
       params = queryString.parse(window.location.search, {
-        ignoreQueryPrefix: true
+        ignoreQueryPrefix: true,
       });
 
       if (
@@ -89,10 +88,10 @@ class LoadTemplate extends Component {
             params.id,
             params._wpnonce
           ).then(
-            res => {
+            (res) => {
               this.setState({ preview: res });
             },
-            error => {
+            (error) => {
               console.warn(error);
               this.props.history.push('/not-found');
             }
@@ -103,10 +102,10 @@ class LoadTemplate extends Component {
             this.state.slug,
             params._wpnonce
           ).then(
-            res => {
+            (res) => {
               this.setState({ preview: res });
             },
-            error => {
+            (error) => {
               console.warn(error);
               this.props.history.push('/not-found');
             }
@@ -120,25 +119,24 @@ class LoadTemplate extends Component {
     if (!this.props.data[this.props.type][this.state.slug]) {
       // Load page content from API by slug
       api.Content.dataBySlug(this.props.type, this.state.slug).then(
-        res => {
+        (res) => {
           this.props.load({
             type: this.props.type,
             slug: this.state.slug,
-            data: res
+            data: res,
           });
         },
-        error => {
+        (error) => {
           console.warn(error);
         }
       );
     }
-    console.log(this.props.type);
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.match.params.slug !== this.props.match.params.slug) {
       this.setState({
-        slug: this.props.match.params.slug
+        slug: this.props.match.params.slug,
       });
     }
   }
