@@ -12,7 +12,7 @@ import {
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import api from '../../../api';
-import './index.scss';
+import './header.css';
 import Logo from '../../../assets/imgs/mah.svg';
 
 const mapStateToProps = (state) => ({
@@ -22,7 +22,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   loadMenu: (menu) => dispatch({ type: 'LOAD_MENU', payload: menu }),
 });
-console.log(api.menus);
+
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -57,7 +57,6 @@ class Header extends Component {
         );
       });
     }
-    console.log(this.props);
     return null;
   }
 

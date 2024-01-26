@@ -8,6 +8,8 @@ $secondary-light: lighten($secondary-color, 50%);
 //need to use in sass font-size functions
 $base-font-size: 1em;
 $scale-factor: 1.25;
+$font-family-proxima: ProximaNova, 'Helvetica Neue', sans-serif;
+$font-family-noto-serif: 'Noto Serif TC', serif;
 :root {
   //Fonts
   --base-font-size: 1em;
@@ -18,8 +20,9 @@ $scale-factor: 1.25;
   --font-size-med: calc(1.5rem + 0.25vw);
   --font-size-lg: calc(2rem + 0.25vw);
   --font-size-xlg: calc(3rem + 0.25vw);
-  //--font-family-body: ProximaNova, 'Helvetica Neue', sans-serif;
-  --font-family-body: 'Noto Serif TC', serif;
+  --font-family-body: #{$font-family-noto-serif};
+  --font-family-nav: #{$font-family-proxima};
+  //--font-family-body: 'Noto Serif TC', serif;
   --font-family-cursive: Scriptina, cursive;
   //--font-family-heading: ProximaNova, 'Helvetica Neue', sans-serif;
   --font-family-heading: Novecento, 'Helvetica Neue', sans-serif;
