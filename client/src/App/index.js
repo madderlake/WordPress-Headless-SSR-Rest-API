@@ -3,7 +3,7 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import AsyncChunks from '../components/utilities/AsyncLoader';
 import NotFound from '../components/templates/NotFound';
-import Header from '../components/layout/Header/';
+import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import LoadTemplate from '../components/templates/LoadTemplate';
 import api from '../api';
