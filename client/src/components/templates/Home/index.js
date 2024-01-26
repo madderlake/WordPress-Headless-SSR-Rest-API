@@ -1,10 +1,9 @@
 import React from 'react';
 import { Container } from 'reactstrap';
-//import Row from "react-bootstrap/Row";
 import ContentBlock from '../../utilities/ContentBlock';
-import './index.scss';
+import './index.css';
 
-const Home = props => {
+const Home = (props) => {
   if (props.data) {
     const data = props.data;
 

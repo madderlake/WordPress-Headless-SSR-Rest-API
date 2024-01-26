@@ -1,8 +1,1 @@
-article {
-  padding: 0.5rem 1rem 0.5rem 0; }
-
-.post-footer {
-  border-top: 1px dotted lightblue;
-  padding: 1rem 0; }
-  .post-footer p {
-    margin: 0 1rem; }
+.post-footer{border-top:1px dotted #add8e6;padding:1rem 0}.post-footer p{margin:0 1rem}

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*This until color-mod is cool with W3C - these are colors that we're modifying using existing functions in Sass*/
 :root {
   --base-font-size: 1em;
@@ -8,9 +9,10 @@
   --font-size-med: calc(1.5rem + 0.25vw);
   --font-size-lg: calc(2rem + 0.25vw);
   --font-size-xlg: calc(3rem + 0.25vw);
-  --font-family: ProximaNova, 'Helvetica Neue', sans-serif;
+  --font-family-body: Noto Serif TC, serif;
+  --font-family-nav: ProximaNova, Helvetica Neue, sans-serif;
   --font-family-cursive: Scriptina, cursive;
-  --font-family-heading: Novecento;
+  --font-family-heading: Novecento, "Helvetica Neue", sans-serif;
   --primary-color: #ed1249;
   --primary-light: #fcdbe4;
   --secondary-color: #2b93df;
@@ -20,7 +22,8 @@
   --light-gray: #929394;
   --basic-black: #000000;
   --button-learn-bg: var(--secondary-color);
-  --header-allowance: 5rem; }
+  --header-allowance: 5rem;
+}
 
 /*This until color-mod is cool with W3C - these are colors that we're modifying using existing functions in Sass*/
 :root {
@@ -32,9 +35,10 @@
   --font-size-med: calc(1.5rem + 0.25vw);
   --font-size-lg: calc(2rem + 0.25vw);
   --font-size-xlg: calc(3rem + 0.25vw);
-  --font-family: ProximaNova, 'Helvetica Neue', sans-serif;
+  --font-family-body: Noto Serif TC, serif;
+  --font-family-nav: ProximaNova, Helvetica Neue, sans-serif;
   --font-family-cursive: Scriptina, cursive;
-  --font-family-heading: Novecento;
+  --font-family-heading: Novecento, "Helvetica Neue", sans-serif;
   --primary-color: #ed1249;
   --primary-light: #fcdbe4;
   --secondary-color: #2b93df;
@@ -44,1163 +48,1526 @@
   --light-gray: #929394;
   --basic-black: #000000;
   --button-learn-bg: var(--secondary-color);
-  --header-allowance: 5rem; }
+  --header-allowance: 5rem;
+}
 
 @font-face {
-  font-family: 'ProximaNova';
+  font-family: "ProximaNova";
   src: url(../assets/fonts/proximanova-light-webfont.woff2) format("woff2"), url(../assets/fonts/proximanova-light-webfont.woff) format("woff");
   font-weight: 300;
-  font-style: normal; }
-
+  font-style: normal;
+}
 @font-face {
-  font-family: 'ProximaNova';
+  font-family: "ProximaNova";
   src: url(../assets/fonts/proximanova-lightitalic-webfont.woff2) format("woff2"), url(../assets/fonts/proximanova-lightitalic-webfont.woff) format("woff");
   font-weight: 300;
-  font-style: italic; }
-
+  font-style: italic;
+}
 @font-face {
-  font-family: 'ProximaNova';
+  font-family: "ProximaNova";
   src: url(../assets/fonts/proximanova-reg-webfont.woff2) format("woff2"), url(../assets/fonts/proximanova-reg-webfont.woff) format("woff");
   font-weight: normal;
-  font-style: normal; }
-
+  font-style: normal;
+}
 @font-face {
-  font-family: 'ProximaNova';
+  font-family: "ProximaNova";
   src: url(../assets/fonts/proximanova-regitalic-webfont.woff2) format("woff2"), url(../assets/fonts/proximanova-regitalic-webfont.woff) format("woff");
   font-weight: normal;
-  font-style: italic; }
-
+  font-style: italic;
+}
 @font-face {
-  font-family: 'proxima_nova_semibold';
+  font-family: "proxima_nova_semibold";
   src: url(../assets/fonts/proximanova-sbold-webfont.woff2) format("woff2"), url(../assets/fonts/proximanova-sbold-webfont.woff) format("woff");
   font-weight: 700;
-  font-style: normal; }
-
+  font-style: normal;
+}
 @font-face {
-  font-family: 'proxima_nova_semibold_italic';
+  font-family: "proxima_nova_semibold_italic";
   src: url(../assets/fonts/proximanova-sbolditalic-webfont.woff2) format("woff2"), url(../assets/fonts/proximanova-sbolditalic-webfont.woff) format("woff");
   font-weight: 700;
-  font-style: italic; }
-
+  font-style: italic;
+}
 @font-face {
-  font-family: 'Novecento';
-  src: url(/assets/fonts/novecentowide-light.eot);
-  src: url(/assets/fonts/novecentowide-light.eot#iefix) format("embedded-opentype"), url(/assets/fonts/novecentowide-light.woff) format("woff"), url(/assets/fonts/novecentowide-light.ttf) format("truetype"), url(/assets/fonts/novecentowide-light.svg) format("svg");
+  font-family: "Novecento";
+  src: url(../assets/fonts/novecentowide-light.eot);
+  src: url(../assets/fonts/novecentowide-light.eot#iefix) format("embedded-opentype"), url(../assets/fonts/novecentowide-light.woff) format("woff"), url(../assets/fonts/novecentowide-light.ttf) format("truetype"), url(../assets/fonts/novecentowide-light.svg) format("svg");
   font-weight: normal;
-  font-style: normal; }
-
-[class^='novo-']:before,
-[class*=' novo-']:before,
-[class^='novo-']:after,
-[class*=' novo-']:after {
+  font-style: normal;
+}
+[class^=novo-]:before,
+[class*=" novo-"]:before,
+[class^=novo-]:after,
+[class*=" novo-"]:after {
   font-family: Novecento;
-  font-style: normal; }
+  font-style: normal;
+}
 
 .novo-A:before {
-  content: '\41'; }
+  content: "A";
+}
 
 .novo-AE:before {
-  content: '\c6'; }
+  content: "Æ";
+}
 
 .novo-Aacute:before {
-  content: '\c1'; }
+  content: "Á";
+}
 
 .novo-Abreve:before {
-  content: '\102'; }
+  content: "Ă";
+}
 
 .novo-Acircumflex:before {
-  content: '\c2'; }
+  content: "Â";
+}
 
 .novo-Adieresis:before {
-  content: '\c4'; }
+  content: "Ä";
+}
 
 .novo-Agrave:before {
-  content: '\c0'; }
+  content: "À";
+}
 
 .novo-Amacron:before {
-  content: '\100'; }
+  content: "Ā";
+}
 
 .novo-Aogonek:before {
-  content: '\104'; }
+  content: "Ą";
+}
 
 .novo-Aring:before {
-  content: '\c5'; }
+  content: "Å";
+}
 
 .novo-Atilde:before {
-  content: '\c3'; }
+  content: "Ã";
+}
 
 .novo-B:before {
-  content: '\42'; }
+  content: "B";
+}
 
 .novo-C:before {
-  content: '\43'; }
+  content: "C";
+}
 
 .novo-Cacute:before {
-  content: '\106'; }
+  content: "Ć";
+}
 
 .novo-Ccaron:before {
-  content: '\10c'; }
+  content: "Č";
+}
 
 .novo-Ccedilla:before {
-  content: '\c7'; }
+  content: "Ç";
+}
 
 .novo-Cdotaccent:before {
-  content: '\10a'; }
+  content: "Ċ";
+}
 
 .novo-D:before {
-  content: '\44'; }
+  content: "D";
+}
 
 .novo-Dcaron:before {
-  content: '\10e'; }
+  content: "Ď";
+}
 
 .novo-Dcroat:before {
-  content: '\110'; }
+  content: "Đ";
+}
 
 .novo-E:before {
-  content: '\45'; }
+  content: "E";
+}
 
 .novo-Eacute:before {
-  content: '\c9'; }
+  content: "É";
+}
 
 .novo-Ecaron:before {
-  content: '\11a'; }
+  content: "Ě";
+}
 
 .novo-Ecircumflex:before {
-  content: '\ca'; }
+  content: "Ê";
+}
 
 .novo-Edieresis:before {
-  content: '\cb'; }
+  content: "Ë";
+}
 
 .novo-Edotaccent:before {
-  content: '\116'; }
+  content: "Ė";
+}
 
 .novo-Egrave:before {
-  content: '\c8'; }
+  content: "È";
+}
 
 .novo-Emacron:before {
-  content: '\112'; }
+  content: "Ē";
+}
 
 .novo-Eng:before {
-  content: '\14a'; }
+  content: "Ŋ";
+}
 
 .novo-Eogonek:before {
-  content: '\118'; }
+  content: "Ę";
+}
 
 .novo-Eth:before {
-  content: '\d0'; }
+  content: "Ð";
+}
 
 .novo-F:before {
-  content: '\46'; }
+  content: "F";
+}
 
 .novo-G:before {
-  content: '\47'; }
+  content: "G";
+}
 
 .novo-Gbreve:before {
-  content: '\11e'; }
+  content: "Ğ";
+}
 
 .novo-Gcircumflex:before {
-  content: '\11c'; }
+  content: "Ĝ";
+}
 
 .novo-Gcommaaccent:before {
-  content: '\122'; }
+  content: "Ģ";
+}
 
 .novo-Gdotaccent:before {
-  content: '\120'; }
+  content: "Ġ";
+}
 
 .novo-Germandbls:before {
-  content: '\1e9e'; }
+  content: "ẞ";
+}
 
 .novo-H:before {
-  content: '\48'; }
+  content: "H";
+}
 
 .novo-Hbar:before {
-  content: '\126'; }
+  content: "Ħ";
+}
 
 .novo-Hcircumflex:before {
-  content: '\124'; }
+  content: "Ĥ";
+}
 
 .novo-I:before {
-  content: '\49'; }
+  content: "I";
+}
 
 .novo-IJ:before {
-  content: '\132'; }
+  content: "Ĳ";
+}
 
 .novo-Iacute:before {
-  content: '\cd'; }
+  content: "Í";
+}
 
 .novo-Icircumflex:before {
-  content: '\ce'; }
+  content: "Î";
+}
 
 .novo-Idieresis:before {
-  content: '\cf'; }
+  content: "Ï";
+}
 
 .novo-Idotaccent:before {
-  content: '\130'; }
+  content: "İ";
+}
 
 .novo-Igrave:before {
-  content: '\cc'; }
+  content: "Ì";
+}
 
 .novo-Imacron:before {
-  content: '\12a'; }
+  content: "Ī";
+}
 
 .novo-Iogonek:before {
-  content: '\12e'; }
+  content: "Į";
+}
 
 .novo-J:before {
-  content: '\4a'; }
+  content: "J";
+}
 
 .novo-Jcircumflex:before {
-  content: '\134'; }
+  content: "Ĵ";
+}
 
 .novo-K:before {
-  content: '\4b'; }
+  content: "K";
+}
 
 .novo-Kcommaaccent:before {
-  content: '\136'; }
+  content: "Ķ";
+}
 
 .novo-L:before {
-  content: '\4c'; }
+  content: "L";
+}
 
 .novo-Lacute:before {
-  content: '\139'; }
+  content: "Ĺ";
+}
 
 .novo-Lcaron:before {
-  content: '\13d'; }
+  content: "Ľ";
+}
 
 .novo-Lcommaaccent:before {
-  content: '\13b'; }
+  content: "Ļ";
+}
 
 .novo-Ldot:before {
-  content: '\13f'; }
+  content: "Ŀ";
+}
 
 .novo-Lslash:before {
-  content: '\141'; }
+  content: "Ł";
+}
 
 .novo-M:before {
-  content: '\4d'; }
+  content: "M";
+}
 
 .novo-N:before {
-  content: '\4e'; }
+  content: "N";
+}
 
 .novo-Nacute:before {
-  content: '\143'; }
+  content: "Ń";
+}
 
 .novo-Ncaron:before {
-  content: '\147'; }
+  content: "Ň";
+}
 
 .novo-Ncommaaccent:before {
-  content: '\145'; }
+  content: "Ņ";
+}
 
 .novo-Ntilde:before {
-  content: '\d1'; }
+  content: "Ñ";
+}
 
 .novo-O:before {
-  content: '\4f'; }
+  content: "O";
+}
 
 .novo-OE:before {
-  content: '\152'; }
+  content: "Œ";
+}
 
 .novo-Oacute:before {
-  content: '\d3'; }
+  content: "Ó";
+}
 
 .novo-Ocircumflex:before {
-  content: '\d4'; }
+  content: "Ô";
+}
 
 .novo-Odieresis:before {
-  content: '\d6'; }
+  content: "Ö";
+}
 
 .novo-Ograve:before {
-  content: '\d2'; }
+  content: "Ò";
+}
 
 .novo-Ohungarumlaut:before {
-  content: '\150'; }
+  content: "Ő";
+}
 
 .novo-Omacron:before {
-  content: '\14c'; }
+  content: "Ō";
+}
 
 .novo-Oslash:before {
-  content: '\d8'; }
+  content: "Ø";
+}
 
 .novo-Otilde:before {
-  content: '\d5'; }
+  content: "Õ";
+}
 
 .novo-P:before {
-  content: '\50'; }
+  content: "P";
+}
 
 .novo-Q:before {
-  content: '\51'; }
+  content: "Q";
+}
 
 .novo-R:before {
-  content: '\52'; }
+  content: "R";
+}
 
 .novo-Racute:before {
-  content: '\154'; }
+  content: "Ŕ";
+}
 
 .novo-Rcaron:before {
-  content: '\158'; }
+  content: "Ř";
+}
 
 .novo-Rcommaaccent:before {
-  content: '\156'; }
+  content: "Ŗ";
+}
 
 .novo-S:before {
-  content: '\53'; }
+  content: "S";
+}
 
 .novo-Sacute:before {
-  content: '\15a'; }
+  content: "Ś";
+}
 
 .novo-Scaron:before {
-  content: '\160'; }
+  content: "Š";
+}
 
 .novo-Scedilla:before {
-  content: '\15e'; }
+  content: "Ş";
+}
 
 .novo-Scircumflex:before {
-  content: '\15c'; }
+  content: "Ŝ";
+}
 
 .novo-Scommaaccent:before {
-  content: '\218'; }
+  content: "Ș";
+}
 
 .novo-T:before {
-  content: '\54'; }
+  content: "T";
+}
 
 .novo-Tbar:before {
-  content: '\166'; }
+  content: "Ŧ";
+}
 
 .novo-Tcaron:before {
-  content: '\164'; }
+  content: "Ť";
+}
 
 .novo-Tcedilla:before {
-  content: '\162'; }
+  content: "Ţ";
+}
 
 .novo-uni021A:before {
-  content: '\21a'; }
+  content: "Ț";
+}
 
 .novo-Thorn:before {
-  content: '\de'; }
+  content: "Þ";
+}
 
 .novo-U:before {
-  content: '\55'; }
+  content: "U";
+}
 
 .novo-Uacute:before {
-  content: '\da'; }
+  content: "Ú";
+}
 
 .novo-Ubreve:before {
-  content: '\16c'; }
+  content: "Ŭ";
+}
 
 .novo-Ucircumflex:before {
-  content: '\db'; }
+  content: "Û";
+}
 
 .novo-Udieresis:before {
-  content: '\dc'; }
+  content: "Ü";
+}
 
 .novo-Ugrave:before {
-  content: '\d9'; }
+  content: "Ù";
+}
 
 .novo-Uhungarumlaut:before {
-  content: '\170'; }
+  content: "Ű";
+}
 
 .novo-Umacron:before {
-  content: '\16a'; }
+  content: "Ū";
+}
 
 .novo-Uogonek:before {
-  content: '\172'; }
+  content: "Ų";
+}
 
 .novo-Uring:before {
-  content: '\16e'; }
+  content: "Ů";
+}
 
 .novo-V:before {
-  content: '\56'; }
+  content: "V";
+}
 
 .novo-W:before {
-  content: '\57'; }
+  content: "W";
+}
 
 .novo-Wacute:before {
-  content: '\1e82'; }
+  content: "Ẃ";
+}
 
 .novo-Wcircumflex:before {
-  content: '\174'; }
+  content: "Ŵ";
+}
 
 .novo-Wdieresis:before {
-  content: '\1e84'; }
+  content: "Ẅ";
+}
 
 .novo-Wgrave:before {
-  content: '\1e80'; }
+  content: "Ẁ";
+}
 
 .novo-X:before {
-  content: '\58'; }
+  content: "X";
+}
 
 .novo-Y:before {
-  content: '\59'; }
+  content: "Y";
+}
 
 .novo-Yacute:before {
-  content: '\dd'; }
+  content: "Ý";
+}
 
 .novo-Ycircumflex:before {
-  content: '\176'; }
+  content: "Ŷ";
+}
 
 .novo-Ydieresis:before {
-  content: '\178'; }
+  content: "Ÿ";
+}
 
 .novo-Ygrave:before {
-  content: '\1ef2'; }
+  content: "Ỳ";
+}
 
 .novo-Z:before {
-  content: '\5a'; }
+  content: "Z";
+}
 
 .novo-Zacute:before {
-  content: '\179'; }
+  content: "Ź";
+}
 
 .novo-Zcaron:before {
-  content: '\17d'; }
+  content: "Ž";
+}
 
 .novo-Zdotaccent:before {
-  content: '\17b'; }
+  content: "Ż";
+}
 
 .novo-a:before {
-  content: '\61'; }
+  content: "a";
+}
 
 .novo-aacute:before {
-  content: '\e1'; }
+  content: "á";
+}
 
 .novo-abreve:before {
-  content: '\103'; }
+  content: "ă";
+}
 
 .novo-acircumflex:before {
-  content: '\e2'; }
+  content: "â";
+}
 
 .novo-adieresis:before {
-  content: '\e4'; }
+  content: "ä";
+}
 
 .novo-ae:before {
-  content: '\e6'; }
+  content: "æ";
+}
 
 .novo-agrave:before {
-  content: '\e0'; }
+  content: "à";
+}
 
 .novo-amacron:before {
-  content: '\101'; }
+  content: "ā";
+}
 
 .novo-aogonek:before {
-  content: '\105'; }
+  content: "ą";
+}
 
 .novo-aring:before {
-  content: '\e5'; }
+  content: "å";
+}
 
 .novo-atilde:before {
-  content: '\e3'; }
+  content: "ã";
+}
 
 .novo-b:before {
-  content: '\62'; }
+  content: "b";
+}
 
 .novo-c:before {
-  content: '\63'; }
+  content: "c";
+}
 
 .novo-cacute:before {
-  content: '\107'; }
+  content: "ć";
+}
 
 .novo-ccaron:before {
-  content: '\10d'; }
+  content: "č";
+}
 
 .novo-ccedilla:before {
-  content: '\e7'; }
+  content: "ç";
+}
 
 .novo-cdotaccent:before {
-  content: '\10b'; }
+  content: "ċ";
+}
 
 .novo-d:before {
-  content: '\64'; }
+  content: "d";
+}
 
 .novo-dcaron:before {
-  content: '\10f'; }
+  content: "ď";
+}
 
 .novo-dcroat:before {
-  content: '\111'; }
+  content: "đ";
+}
 
 .novo-dotlessi:before {
-  content: '\131'; }
+  content: "ı";
+}
 
 .novo-dotlessj:before {
-  content: '\237'; }
+  content: "ȷ";
+}
 
 .novo-e:before {
-  content: '\65'; }
+  content: "e";
+}
 
 .novo-eacute:before {
-  content: '\e9'; }
+  content: "é";
+}
 
 .novo-ecaron:before {
-  content: '\11b'; }
+  content: "ě";
+}
 
 .novo-ecircumflex:before {
-  content: '\ea'; }
+  content: "ê";
+}
 
 .novo-edieresis:before {
-  content: '\eb'; }
+  content: "ë";
+}
 
 .novo-edotaccent:before {
-  content: '\117'; }
+  content: "ė";
+}
 
 .novo-egrave:before {
-  content: '\e8'; }
+  content: "è";
+}
 
 .novo-emacron:before {
-  content: '\113'; }
+  content: "ē";
+}
 
 .novo-eng:before {
-  content: '\14b'; }
+  content: "ŋ";
+}
 
 .novo-eogonek:before {
-  content: '\119'; }
+  content: "ę";
+}
 
 .novo-eth:before {
-  content: '\f0'; }
+  content: "ð";
+}
 
 .novo-f:before {
-  content: '\66'; }
+  content: "f";
+}
 
 .novo-g:before {
-  content: '\67'; }
+  content: "g";
+}
 
 .novo-gbreve:before {
-  content: '\11f'; }
+  content: "ğ";
+}
 
 .novo-gcircumflex:before {
-  content: '\11d'; }
+  content: "ĝ";
+}
 
 .novo-gcommaaccent:before {
-  content: '\123'; }
+  content: "ģ";
+}
 
 .novo-gdotaccent:before {
-  content: '\121'; }
+  content: "ġ";
+}
 
 .novo-germandbls:before {
-  content: '\df'; }
+  content: "ß";
+}
 
 .novo-h:before {
-  content: '\68'; }
+  content: "h";
+}
 
 .novo-hbar:before {
-  content: '\127'; }
+  content: "ħ";
+}
 
 .novo-hcircumflex:before {
-  content: '\125'; }
+  content: "ĥ";
+}
 
 .novo-i:before {
-  content: '\69'; }
+  content: "i";
+}
 
 .novo-iacute:before {
-  content: '\ed'; }
+  content: "í";
+}
 
 .novo-icircumflex:before {
-  content: '\ee'; }
+  content: "î";
+}
 
 .novo-idieresis:before {
-  content: '\ef'; }
+  content: "ï";
+}
 
 .novo-igrave:before {
-  content: '\ec'; }
+  content: "ì";
+}
 
 .novo-ij:before {
-  content: '\133'; }
+  content: "ĳ";
+}
 
 .novo-imacron:before {
-  content: '\12b'; }
+  content: "ī";
+}
 
 .novo-iogonek:before {
-  content: '\12f'; }
+  content: "į";
+}
 
 .novo-j:before {
-  content: '\6a'; }
+  content: "j";
+}
 
 .novo-jcircumflex:before {
-  content: '\135'; }
+  content: "ĵ";
+}
 
 .novo-k:before {
-  content: '\6b'; }
+  content: "k";
+}
 
 .novo-kcommaaccent:before {
-  content: '\137'; }
+  content: "ķ";
+}
 
 .novo-l:before {
-  content: '\6c'; }
+  content: "l";
+}
 
 .novo-lacute:before {
-  content: '\13a'; }
+  content: "ĺ";
+}
 
 .novo-lcaron:before {
-  content: '\13e'; }
+  content: "ľ";
+}
 
 .novo-lcommaaccent:before {
-  content: '\13c'; }
+  content: "ļ";
+}
 
 .novo-ldot:before {
-  content: '\140'; }
+  content: "ŀ";
+}
 
 .novo-lslash:before {
-  content: '\142'; }
+  content: "ł";
+}
 
 .novo-m:before {
-  content: '\6d'; }
+  content: "m";
+}
 
 .novo-n:before {
-  content: '\6e'; }
+  content: "n";
+}
 
 .novo-nacute:before {
-  content: '\144'; }
+  content: "ń";
+}
 
 .novo-ncaron:before {
-  content: '\148'; }
+  content: "ň";
+}
 
 .novo-ncommaaccent:before {
-  content: '\146'; }
+  content: "ņ";
+}
 
 .novo-ntilde:before {
-  content: '\f1'; }
+  content: "ñ";
+}
 
 .novo-o:before {
-  content: '\6f'; }
+  content: "o";
+}
 
 .novo-oacute:before {
-  content: '\f3'; }
+  content: "ó";
+}
 
 .novo-ocircumflex:before {
-  content: '\f4'; }
+  content: "ô";
+}
 
 .novo-odieresis:before {
-  content: '\f6'; }
+  content: "ö";
+}
 
 .novo-oe:before {
-  content: '\153'; }
+  content: "œ";
+}
 
 .novo-ograve:before {
-  content: '\f2'; }
+  content: "ò";
+}
 
 .novo-ohungarumlaut:before {
-  content: '\151'; }
+  content: "ő";
+}
 
 .novo-omacron:before {
-  content: '\14d'; }
+  content: "ō";
+}
 
 .novo-oslash:before {
-  content: '\f8'; }
+  content: "ø";
+}
 
 .novo-otilde:before {
-  content: '\f5'; }
+  content: "õ";
+}
 
 .novo-p:before {
-  content: '\70'; }
+  content: "p";
+}
 
 .novo-q:before {
-  content: '\71'; }
+  content: "q";
+}
 
 .novo-r:before {
-  content: '\72'; }
+  content: "r";
+}
 
 .novo-racute:before {
-  content: '\155'; }
+  content: "ŕ";
+}
 
 .novo-rcaron:before {
-  content: '\159'; }
+  content: "ř";
+}
 
 .novo-rcommaaccent:before {
-  content: '\157'; }
+  content: "ŗ";
+}
 
 .novo-s:before {
-  content: '\73'; }
+  content: "s";
+}
 
 .novo-sacute:before {
-  content: '\15b'; }
+  content: "ś";
+}
 
 .novo-scaron:before {
-  content: '\161'; }
+  content: "š";
+}
 
 .novo-scedilla:before {
-  content: '\15f'; }
+  content: "ş";
+}
 
 .novo-scircumflex:before {
-  content: '\15d'; }
+  content: "ŝ";
+}
 
 .novo-scommaaccent:before {
-  content: '\219'; }
+  content: "ș";
+}
 
 .novo-t:before {
-  content: '\74'; }
+  content: "t";
+}
 
 .novo-tbar:before {
-  content: '\167'; }
+  content: "ŧ";
+}
 
 .novo-tcaron:before {
-  content: '\165'; }
+  content: "ť";
+}
 
 .novo-tcedilla:before {
-  content: '\163'; }
+  content: "ţ";
+}
 
 .novo-uni021B:before {
-  content: '\21b'; }
+  content: "ț";
+}
 
 .novo-thorn:before {
-  content: '\fe'; }
+  content: "þ";
+}
 
 .novo-u:before {
-  content: '\75'; }
+  content: "u";
+}
 
 .novo-uacute:before {
-  content: '\fa'; }
+  content: "ú";
+}
 
 .novo-ubreve:before {
-  content: '\16d'; }
+  content: "ŭ";
+}
 
 .novo-ucircumflex:before {
-  content: '\fb'; }
+  content: "û";
+}
 
 .novo-udieresis:before {
-  content: '\fc'; }
+  content: "ü";
+}
 
 .novo-ugrave:before {
-  content: '\f9'; }
+  content: "ù";
+}
 
 .novo-uhungarumlaut:before {
-  content: '\171'; }
+  content: "ű";
+}
 
 .novo-umacron:before {
-  content: '\16b'; }
+  content: "ū";
+}
 
 .novo-uogonek:before {
-  content: '\173'; }
+  content: "ų";
+}
 
 .novo-uring:before {
-  content: '\16f'; }
+  content: "ů";
+}
 
 .novo-v:before {
-  content: '\76'; }
+  content: "v";
+}
 
 .novo-w:before {
-  content: '\77'; }
+  content: "w";
+}
 
 .novo-wacute:before {
-  content: '\1e83'; }
+  content: "ẃ";
+}
 
 .novo-wcircumflex:before {
-  content: '\175'; }
+  content: "ŵ";
+}
 
 .novo-wdieresis:before {
-  content: '\1e85'; }
+  content: "ẅ";
+}
 
 .novo-wgrave:before {
-  content: '\1e81'; }
+  content: "ẁ";
+}
 
 .novo-x:before {
-  content: '\78'; }
+  content: "x";
+}
 
 .novo-y:before {
-  content: '\79'; }
+  content: "y";
+}
 
 .novo-yacute:before {
-  content: '\fd'; }
+  content: "ý";
+}
 
 .novo-ycircumflex:before {
-  content: '\177'; }
+  content: "ŷ";
+}
 
 .novo-ydieresis:before {
-  content: '\ff'; }
+  content: "ÿ";
+}
 
 .novo-ygrave:before {
-  content: '\1ef3'; }
+  content: "ỳ";
+}
 
 .novo-z:before {
-  content: '\7a'; }
+  content: "z";
+}
 
 .novo-zacute:before {
-  content: '\17a'; }
+  content: "ź";
+}
 
 .novo-zcaron:before {
-  content: '\17e'; }
+  content: "ž";
+}
 
 .novo-zdotaccent:before {
-  content: '\17c'; }
+  content: "ż";
+}
 
 .novo-ordfeminine:before {
-  content: '\aa'; }
+  content: "ª";
+}
 
 .novo-ordmasculine:before {
-  content: '\ba'; }
+  content: "º";
+}
 
 .novo-zero:before {
-  content: '\30'; }
+  content: "0";
+}
 
 .novo-one:before {
-  content: '\31'; }
+  content: "1";
+}
 
 .novo-two:before {
-  content: '\32'; }
+  content: "2";
+}
 
 .novo-three:before {
-  content: '\33'; }
+  content: "3";
+}
 
 .novo-four:before {
-  content: '\34'; }
+  content: "4";
+}
 
 .novo-five:before {
-  content: '\35'; }
+  content: "5";
+}
 
 .novo-six:before {
-  content: '\36'; }
+  content: "6";
+}
 
 .novo-seven:before {
-  content: '\37'; }
+  content: "7";
+}
 
 .novo-eight:before {
-  content: '\38'; }
+  content: "8";
+}
 
 .novo-nine:before {
-  content: '\39'; }
+  content: "9";
+}
 
 .novo-onequarter:before {
-  content: '\bc'; }
+  content: "¼";
+}
 
 .novo-onehalf:before {
-  content: '\bd'; }
+  content: "½";
+}
 
 .novo-threequarters:before {
-  content: '\be'; }
+  content: "¾";
+}
 
 .novo-fraction:before {
-  content: '\2044'; }
+  content: "⁄";
+}
 
 .novo-oneeighth:before {
-  content: '\215b'; }
+  content: "⅛";
+}
 
 .novo-threeeighths:before {
-  content: '\215c'; }
+  content: "⅜";
+}
 
 .novo-fiveeighths:before {
-  content: '\215d'; }
+  content: "⅝";
+}
 
 .novo-seveneighths:before {
-  content: '\215e'; }
+  content: "⅞";
+}
 
 .novo-twosuperior:before {
-  content: '\b2'; }
+  content: "²";
+}
 
 .novo-threesuperior:before {
-  content: '\b3'; }
+  content: "³";
+}
 
 .novo-onesuperior:before {
-  content: '\b9'; }
+  content: "¹";
+}
 
 .novo-asterisk:before {
-  content: '\2a'; }
+  content: "*";
+}
 
 .novo-backslash:before {
-  content: '\5c'; }
+  content: "\\";
+}
 
 .novo-bullet:before {
-  content: '\2022'; }
+  content: "•";
+}
 
 .novo-colon:before {
-  content: '\3a'; }
+  content: ":";
+}
 
 .novo-comma:before {
-  content: '\2c'; }
+  content: ",";
+}
 
 .novo-ellipsis:before {
-  content: '\2026'; }
+  content: "…";
+}
 
 .novo-exclam:before {
-  content: '\21'; }
+  content: "!";
+}
 
 .novo-exclamdown:before {
-  content: '\a1'; }
+  content: "¡";
+}
 
 .novo-numbersign:before {
-  content: '\23'; }
+  content: "#";
+}
 
 .novo-period:before {
-  content: '\2e'; }
+  content: ".";
+}
 
 .novo-periodcentered:before {
-  content: '\b7'; }
+  content: "·";
+}
 
 .novo-question:before {
-  content: '\3f'; }
+  content: "?";
+}
 
 .novo-questiondown:before {
-  content: '\bf'; }
+  content: "¿";
+}
 
 .novo-quotedbl:before {
-  content: '\22'; }
+  content: '"';
+}
 
 .novo-quotesingle:before {
-  content: '\27'; }
+  content: "'";
+}
 
 .novo-semicolon:before {
-  content: '\3b'; }
+  content: ";";
+}
 
 .novo-slash:before {
-  content: '\2f'; }
+  content: "/";
+}
 
 .novo-underscore:before {
-  content: '\5f'; }
+  content: "_";
+}
 
 .novo-braceleft:before {
-  content: '\7b'; }
+  content: "{";
+}
 
 .novo-braceright:before {
-  content: '\7d'; }
+  content: "}";
+}
 
 .novo-bracketleft:before {
-  content: '\5b'; }
+  content: "[";
+}
 
 .novo-bracketright:before {
-  content: '\5d'; }
+  content: "]";
+}
 
 .novo-parenleft:before {
-  content: '\28'; }
+  content: "(";
+}
 
 .novo-parenright:before {
-  content: '\29'; }
+  content: ")";
+}
 
 .novo-emdash:before {
-  content: '\2014'; }
+  content: "—";
+}
 
 .novo-endash:before {
-  content: '\2013'; }
+  content: "–";
+}
 
 .novo-hyphen:before {
-  content: '\2d'; }
+  content: "-";
+}
 
 .novo-softhyphen:before {
-  content: '\ad'; }
+  content: "­";
+}
 
 .novo-guillemotleft:before {
-  content: '\ab'; }
+  content: "«";
+}
 
 .novo-guillemotright:before {
-  content: '\bb'; }
+  content: "»";
+}
 
 .novo-guilsinglleft:before {
-  content: '\2039'; }
+  content: "‹";
+}
 
 .novo-guilsinglright:before {
-  content: '\203a'; }
+  content: "›";
+}
 
 .novo-quotedblbase:before {
-  content: '\201e'; }
+  content: "„";
+}
 
 .novo-quotedblleft:before {
-  content: '\201c'; }
+  content: "“";
+}
 
 .novo-quotedblright:before {
-  content: '\201d'; }
+  content: "”";
+}
 
 .novo-quoteleft:before {
-  content: '\2018'; }
+  content: "‘";
+}
 
 .novo-quoteright:before {
-  content: '\2019'; }
+  content: "’";
+}
 
 .novo-quotesinglbase:before {
-  content: '\201a'; }
+  content: "‚";
+}
 
 .novo-Euro:before {
-  content: '\20ac'; }
+  content: "€";
+}
 
 .novo-cent:before {
-  content: '\a2'; }
+  content: "¢";
+}
 
 .novo-currency:before {
-  content: '\a4'; }
+  content: "¤";
+}
 
 .novo-dollar:before {
-  content: '\24'; }
+  content: "$";
+}
 
 .novo-uni20B9:before {
-  content: '\20b9'; }
+  content: "₹";
+}
 
 .novo-sterling:before {
-  content: '\a3'; }
+  content: "£";
+}
 
 .novo-yen:before {
-  content: '\a5'; }
+  content: "¥";
+}
 
 .novo-asciitilde:before {
-  content: '\7e'; }
+  content: "~";
+}
 
 .novo-divide:before {
-  content: '\f7'; }
+  content: "÷";
+}
 
 .novo-equal:before {
-  content: '\3d'; }
+  content: "=";
+}
 
 .novo-greater:before {
-  content: '\3e'; }
+  content: ">";
+}
 
 .novo-greaterequal:before {
-  content: '\2265'; }
+  content: "≥";
+}
 
 .novo-less:before {
-  content: '\3c'; }
+  content: "<";
+}
 
 .novo-lessequal:before {
-  content: '\2264'; }
+  content: "≤";
+}
 
 .novo-minus:before {
-  content: '\2212'; }
+  content: "−";
+}
 
 .novo-multiply:before {
-  content: '\d7'; }
+  content: "×";
+}
 
 .novo-notequal:before {
-  content: '\2260'; }
+  content: "≠";
+}
 
 .novo-percent:before {
-  content: '\25'; }
+  content: "%";
+}
 
 .novo-perthousand:before {
-  content: '\2030'; }
+  content: "‰";
+}
 
 .novo-plus:before {
-  content: '\2b'; }
+  content: "+";
+}
 
 .novo-plusminus:before {
-  content: '\b1'; }
+  content: "±";
+}
 
 .novo-ampersand:before {
-  content: '\26'; }
+  content: "&";
+}
 
 .novo-at:before {
-  content: '\40'; }
+  content: "@";
+}
 
 .novo-bar:before {
-  content: '\7c'; }
+  content: "|";
+}
 
 .novo-brokenbar:before {
-  content: '\a6'; }
+  content: "¦";
+}
 
 .novo-copyright:before {
-  content: '\a9'; }
+  content: "©";
+}
 
 .novo-dagger:before {
-  content: '\2020'; }
+  content: "†";
+}
 
 .novo-daggerdbl:before {
-  content: '\2021'; }
+  content: "‡";
+}
 
 .novo-degree:before {
-  content: '\b0'; }
+  content: "°";
+}
 
 .novo-lozenge:before {
-  content: '\25ca'; }
+  content: "◊";
+}
 
 .novo-afii61352:before {
-  content: '\2116'; }
+  content: "№";
+}
 
 .novo-paragraph:before {
-  content: '\b6'; }
+  content: "¶";
+}
 
 .novo-registered:before {
-  content: '\ae'; }
+  content: "®";
+}
 
 .novo-section:before {
-  content: '\a7'; }
+  content: "§";
+}
 
 .novo-trademark:before {
-  content: '\2122'; }
+  content: "™";
+}
 
 .novo-commaaccentcomb:before {
-  content: '\326'; }
+  content: "̦";
+}
 
 .novo-asciicircum:before {
-  content: '\5e'; }
+  content: "^";
+}
 
 .novo-acute:before {
-  content: '\b4'; }
+  content: "´";
+}
 
 .novo-breve:before {
-  content: '\2d8'; }
+  content: "˘";
+}
 
 .novo-caron:before {
-  content: '\2c7'; }
+  content: "ˇ";
+}
 
 .novo-cedilla:before {
-  content: '\b8'; }
+  content: "¸";
+}
 
 .novo-circumflex:before {
-  content: '\2c6'; }
+  content: "ˆ";
+}
 
 .novo-dieresis:before {
-  content: '\a8'; }
+  content: "¨";
+}
 
 .novo-dotaccent:before {
-  content: '\2d9'; }
+  content: "˙";
+}
 
 .novo-grave:before {
-  content: '\60'; }
+  content: "`";
+}
 
 .novo-hungarumlaut:before {
-  content: '\2dd'; }
+  content: "˝";
+}
 
 .novo-macron:before {
-  content: '\af'; }
+  content: "¯";
+}
 
 .novo-ogonek:before {
-  content: '\2db'; }
+  content: "˛";
+}
 
 .novo-ring:before {
-  content: '\2da'; }
+  content: "˚";
+}
 
 .novo-tilde:before {
-  content: '\2dc'; }
+  content: "˜";
+}
 
 @font-face {
-  font-family: 'scriptina';
+  font-family: "scriptina";
   src: url(../assets/fonts/scriptina-webfont.eot?#iefix) format("embedded-opentype"), url("../assets/fonts/scriptina-webfont.woff") format("woff"), url("../assets/fonts/scriptina-webfont.ttf") format("truetype"), url("../assets/fonts/scriptina-webfont.svg#scriptinaregular") format("svg");
   font-weight: normal;
-  font-style: normal; }
-
+  font-style: normal;
+}
 html {
-  font-size: var(--base-font-size); }
+  font-size: var(--base-font-size);
+}
 
 body {
   font-size: var(--base-font-size);
   font-size: 1rem;
-  font-family: var(--font-family);
+  font-family: var(--font-family-body);
   color: var(--basic-black);
-  padding-top: var(--header-allowance); }
+  padding-top: var(--header-allowance);
+}
 
 a {
-  color: var(--secondary-color); }
-  a:hover {
-    color: var(--primary-color); }
+  color: var(--secondary-color);
+}
+a:hover {
+  color: var(--primary-color);
+}
 
 h1,
 .h1 {
-  font-size: calc( (var(--scale-factor) * (var(--base-font-size))) * 2.44141 - 0.25vw);
+  font-size: calc(var(--scale-factor) * (var(--base-font-size)) * 2.44140625 - 0.25vw);
   color: var(--primary-color);
-  font-weight: 300; }
+  font-weight: 300;
+}
 
 h2,
 .h2 {
-  font-size: calc( (var(--scale-factor) * var(--base-font-size)) * 1.95312 - 0.25vw);
+  font-size: calc(var(--scale-factor) * var(--base-font-size) * 1.953125 - 0.25vw);
   color: var(--primary-color);
-  font-weight: 300; }
+  font-weight: 300;
+}
 
 h3,
 .h3 {
-  font-size: calc( (var(--scale-factor) * var(--base-font-size)) * 1.5625 - 0.25vw);
+  font-size: calc(var(--scale-factor) * var(--base-font-size) * 1.5625 - 0.25vw);
   color: var(--secondary-color);
-  font-weight: 400; }
+  font-weight: 400;
+}
 
 h4,
 .h4 {
-  font-size: calc( var(--scale-factor) * var(--base-font-size) * 1.25 - 0.25vw);
+  font-size: calc(var(--scale-factor) * var(--base-font-size) * 1.25 - 0.25vw);
   color: var(--dark-gray);
-  font-weight: 500; }
+  font-weight: 500;
+}
 
 h5,
 .h5 {
   font-size: calc(var(--base-font-size) * var(--scale-factor));
-  color: var(--dark-gray); }
+  color: var(--dark-gray);
+}
 
 .h1,
 .h2,
@@ -1214,47 +1581,79 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0.5em 0; }
+  font-family: var(--font-family-heading);
+  margin: 0.5em 0;
+}
 
 img {
   display: block;
   max-width: 100%;
-  height: auto; }
+  height: auto;
+}
 
 section {
-  margin: 2rem 0 1rem; }
-  section .section-title {
-    flex-basis: 100%; }
-  section.bg-img {
-    background-size: 100% auto;
-    background-repeat: no-repeat;
-    min-height: 40vh;
-    background-size: cover;
-    background-position: center center; }
-  section:first-child.bg-img {
-    margin-top: 0; }
-  section.c-hero {
-    margin-top: 0;
-    padding-top: 0;
-    min-height: 50vh; }
+  margin: 2rem 0 1rem;
+}
+section .section-title {
+  flex-basis: 100%;
+}
+section.bg-img {
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  min-height: 40vh;
+  background-size: cover;
+  background-position: center center;
+}
+section:first-child.bg-img {
+  margin-top: 0;
+}
+section.c-hero {
+  margin-top: 0;
+  padding-top: 0;
+  min-height: 50vh;
+}
 
 .btn-secondary {
   background-color: var(--secondary-color);
-  border-color: var(--secondary-color); }
+  border-color: var(--secondary-color);
+}
 
 .special-heading {
   font-family: var(--font-family-special);
-  font-size: calc(var(--font-size-xlg) * 1.15); }
+  font-size: calc(var(--font-size-xlg) * 1.15);
+}
 
 .o-content-block {
   position: relative;
   z-index: 10;
-  padding: 1rem 0; }
-  .o-content-block p {
-    font-size: calc(var(--base-font-size) * var(--scale-factor)); }
+  padding: 1rem 0;
+}
+.o-content-block p {
+  font-size: calc(var(--base-font-size) * var(--scale-factor));
+}
 
 .novo {
-  font-family: Novecento, ProximaNova, 'Helvetica Neue', Helvetica, sans-serif; }
+  font-family: Novecento, ProximaNova, "Helvetica Neue", Helvetica, sans-serif;
+}
 
 .script {
-  font-family: Scriptina, ProximaNova, 'Helvetica Neue', Helvetica, sans-serif; }
+  font-family: Scriptina, ProximaNova, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.col-group > div.acf-input > .acf-fields {
+  display: flex !important;
+}
+.col-group > div.acf-input > .acf-fields .dyn-col {
+  flex: auto !important;
+}
+
+/*
+.col-group > div.acf-input > .acf-fields > .dyn-col {
+	flex:auto !important;
+}
+*/
+/*
+#col-1, .dyn-col {
+		flex:auto !important;
+	}
+*/

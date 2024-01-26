@@ -1,25 +1,25 @@
-import React from "react";
-import ReactDOMServer from "react-dom/server";
-import dotenv from "dotenv/config";
-import Loadable from "react-loadable";
-import manifest from "../build/asset-manifest.json";
-import { Provider } from "react-redux";
-import { StaticRouter as Router } from "react-router-dom";
-import { Helmet } from "react-helmet";
-import postTypes from "../src/post-types";
-import { arrayToObject } from "../src/utilities/convertData";
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
+import dotenv from 'dotenv/config';
+import Loadable from 'react-loadable';
+import manifest from '../build/asset-manifest.json';
+import { Provider } from 'react-redux';
+import { StaticRouter as Router } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
+import postTypes from '../src/post-types';
+import { arrayToObject } from '../src/utilities/convertData';
 
-import api from "../src/api";
-import App from "../src/App";
+// import api from '../src/api';
+import App from '../src/App';
 
-const path = require("path");
-const fs = require("fs");
+const path = require('path');
+const fs = require('fs');
 
 // Extracts filesnames from all code split chunks
 // imported from the manifest given by CRA / Webpack / Loadable
 const extractAssets = (assets, chunks) =>
   Object.keys(assets)
-    .filter((asset) => chunks.indexOf(asset.replace(".js", "")) > -1)
+    .filter((asset) => chunks.indexOf(asset.replace('.js', '')) > -1)
     .map((k) => assets[k]);
 
 // This function removes all pages
@@ -28,23 +28,23 @@ const extractAssets = (assets, chunks) =>
 // in server Redux store, and it could get huge
 const filterDataStore = (state, url) => {
   // Remove leading slash from URL
-  let slug = url.replace(/^\/+/g, "");
+  let slug = url.replace(/^\/+/g, '');
 
   // If no slug, assume homepage
-  slug = slug.length === 0 ? "home" : slug;
+  slug = slug.length === 0 ? 'home' : slug;
 
   // Store URL segments
-  let segments = slug.split("/");
+  let segments = slug.split('/');
 
   // If multiple URL segments, trim to last one (slug)
-  slug = slug.substr(slug.lastIndexOf("/") + 1);
+  slug = slug.substr(slug.lastIndexOf('/') + 1);
 
   // If more than 1 URL segment, set type equal to first segment
   // If no match from postTypes, set default of pages
   let type =
     postTypes.indexOf(segments[0]) > -1
       ? postTypes[postTypes.indexOf(segments[0])]
-      : "pages";
+      : 'pages';
 
   // If data found in state, remove all besides data in question
   if (state.api.data[type][slug]) {
@@ -76,11 +76,9 @@ const filterDataStore = (state, url) => {
 
 export default (store) => (req, res, next) => {
   // point to HTML from CRA
-  const filePath = path.resolve(__dirname, "..", "build", "index.html");
-
-  fs.readFile(filePath, "utf8", (err, htmlData) => {
+  const filePath = path.resolve(__dirname, '..', 'build', 'index.html');
+  fs.readFile(filePath, 'utf8', (err, htmlData) => {
     if (err) {
-      console.log("err", err);
       return res.status(404).end();
     }
 
@@ -112,13 +110,13 @@ export default (store) => (req, res, next) => {
     return res.send(
       htmlData
         .replace(`<div id="root"></div>`, `<div id="root">${html}</div>`)
-        .replace("</body>", extraChunks.join("") + "</body>")
+        .replace('</body>', extraChunks.join('') + '</body>')
         .replace(
           '"__SERVER_PAGE_STATE__"',
           filterDataStore(store.getState(), req.baseUrl)
         )
         .replace(
-          "</head>",
+          '</head>',
           `${helmet.title.toString()}${helmet.meta.toString()}</head>`
         )
     );

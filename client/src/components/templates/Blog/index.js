@@ -9,31 +9,29 @@ import Post from '../Post';
 import './index.css';
 import ContentBlock from '../../utilities/ContentBlock';
 
-const Blog = props => {
-  console.log(props);
+const Blog = (props) => {
   const [appState, setAppState] = useState({
     loading: true,
-    postList: []
+    postList: [],
   });
   const type = props.slug === 'blog' ? 'posts' : props.type;
   const url = `${API_ROOT}/wp-json/wp/v2/${type}/?_embed`;
   const fetchPosts = () => {
     superagent
       .get(url)
-      .then(res => res.body)
-      .then(posts => setAppState({ loading: false, posts: posts }));
+      .then((res) => res.body)
+      .then((posts) => setAppState({ loading: false, posts: posts }));
   };
   useEffect(() => {
     fetchPosts();
   }, [setAppState]);
 
   if (props.data) {
-    console.log(props.data.title);
     const { sidebar_content } = props.data.acf;
     const pageTitle = props.data.title.rendered;
     const sidebarContent = sidebar_content ? sidebar_content.component : null;
     const posts = appState.posts ? [...appState.posts] : [];
-    const showPosts = posts.map(post => {
+    const showPosts = posts.map((post) => {
       return <Post data={post} key={`post-${post.id}`} />;
     });
     return (
@@ -42,8 +40,7 @@ const Blog = props => {
           <h1>{pageTitle}</h1>
           <ContentBlock
             content={props.data.content.rendered}
-            title={pageTitle}
-          ></ContentBlock>
+            title={pageTitle}></ContentBlock>
         </Container>
         <Container>
           <Row>

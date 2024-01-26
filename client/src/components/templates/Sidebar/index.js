@@ -5,12 +5,10 @@ import FlexContent from '../FlexContent';
 import SidebarContent from '../../layout/Sidebar/Sidebar';
 import './index.css';
 
-const Sidebar = props => {
+const Sidebar = (props) => {
   if (props.data) {
-    console.log(props.data);
     const { sidebar_content } = props.data.acf;
     const sidebarContent = sidebar_content ? sidebar_content.component : null;
-    console.log(sidebar_content.component);
     return (
       <Container>
         <Row>

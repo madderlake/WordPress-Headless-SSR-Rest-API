@@ -3,30 +3,30 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import AsyncChunks from '../components/utilities/AsyncLoader';
 import NotFound from '../components/templates/NotFound';
-import Header from '../components/layout/Header';
+import Header from '../components/layout/Header/';
 import Footer from '../components/layout/Footer';
 import LoadTemplate from '../components/templates/LoadTemplate';
 import api from '../api';
 import './app.css';
 
-const mapStateToProps = state => ({
-  pageList: state.api.lists.pages
+const mapStateToProps = (state) => ({
+  pageList: state.api.lists.pages,
 });
 
-const mapDispatchToProps = dispatch => ({
-  loadPages: list => dispatch({ type: 'LOAD_PAGES_LIST', payload: list })
+const mapDispatchToProps = (dispatch) => ({
+  loadPages: (list) => dispatch({ type: 'LOAD_PAGES_LIST', payload: list }),
 });
 
 class App extends Component {
   constructor(props) {
     super(props);
 
-    this.buildRoutes = pages => {
+    this.buildRoutes = (pages) => {
       if (this.props.pageList && this.props.pageList.length > 0) {
         return [
           <Route
             key="posts"
-            render={props => (
+            render={(props) => (
               <LoadTemplate {...props} template="post" type="post" />
             )}
             exact
@@ -55,7 +55,7 @@ class App extends Component {
 
             return (
               <Route
-                render={props => (
+                render={(props) => (
                   <LoadTemplate
                     {...props}
                     template={route.template}
@@ -74,12 +74,12 @@ class App extends Component {
             exact
             key="wp-draft"
             page="/wp-draft"
-            render={props => (
+            render={(props) => (
               <LoadTemplate {...props} slug={'wp-draft'} type={'pages'} />
             )}
           />,
 
-          <Route key="not-found" component={NotFound} />
+          <Route key="not-found" component={NotFound} />,
         ];
       }
     };
@@ -105,9 +105,4 @@ class App extends Component {
 }
 
 //export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(App)
-);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
