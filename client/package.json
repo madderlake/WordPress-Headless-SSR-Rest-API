@@ -28,7 +28,7 @@
   "scripts": {
     "build-css": "sass --no-source-map --style=compressed src:src src/styles/scss/styles.scss:src/index.css",
     "watch:sass": "sass --no-source-map -w  src:src",
-    "start": "npm-run-all -p serve watch:sass start-js",
+    "start": "NODE_ENV=development npm-run-all -p serve watch:sass start-js",
     "build": "npm-run-all build-css build-js",
     "start-js": "react-scripts start",
     "serve": "node ssr-init",
