@@ -89,6 +89,10 @@ I am currently (as of Jan 2024) building out a new headless instance using NextJ
 
 This project uses Webpack to compile SASS to css. To iterate quickly, I've used Bootstrap, with component-level overrides.
 
+### Preliminary Verdict
+
+It's blazingly faster than any Wordpress site I have encountered, to the point where it doesn't feel at all like WordPress!
+
 ### Next Steps and TODOs
 
 - Integrate GraphQL?
