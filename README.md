@@ -79,9 +79,7 @@ This theme relies on WordPress page templates to assign ACF custom fields to pag
 
 As noted above, I wanted to be able to duplicate and expand on my extensive work using ACF to create page templates with layouts to avoid page builders. I have had great success using these flexible page templates for large and small clients.
 
-The page templates and all the layouts are built as React components, after creating "blank" templates in WordPress (api) to get them registered.
-
-The `ACF to API` plugin adds an `acf` endpoint to the API, enabling the templates to grab the data they need.
+The `ACF to API` plugin adds an `acf` endpoint to the API, enabling the ACF templates to grab the data they need.
 
 **Update:** For this theme, the REST API works well. I have looked at using GraphQL, but the queries become quite complex because of the nature of the fields in ACF.
 
