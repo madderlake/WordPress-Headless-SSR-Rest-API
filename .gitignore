@@ -1,8 +1,3 @@
-# Wordpress
-
-api/wp-content/themes/twentytwenty/
-api/wp-content/themes/twentytwentythree/
-
 # Mac garbage files
 .DS_Store
 
@@ -85,6 +80,8 @@ api/wp-content/themes/twentysixteen
 api/wp-content/themes/twentyseventeen
 api/wp-content/themes/twentyeighteen
 api/wp-content/themes/twentynineteen
+api/wp-content/themes/twentytwenty/
+api/wp-content/themes/twentytwentythree/
 api/wp-content/plugins/akismet/
 api/wp-content/plugins/hello.php
 api/wp-includes
