@@ -1,8 +1,8 @@
 # [](#server-side-rendered--code-split-react--WordPress-rest-api---built-by-keen-wip)SSR / React Code Split + Headless WordPress + REST API (WIP)
 
-This repo is based on a [boilerplate](https://github.com/trouble/react-wp-rest) for pairing the WP Rest API with a server-side rendered and code-split React client, built by Keen Studios. I recently resurrected it by updating dependencies and adding a new docker-compose file consistent with recent updates.
+This repo is based on a [boilerplate](https://github.com/trouble/react-wp-rest) for pairing the WP Rest API with a server-side rendered and code-split React client, built by Keen Studios. I built this out a few years ago to test drive the headless concept and to utilize a page-template-driven approach, which was not easily done at the time in NextJS and recently resurrected it by updating dependencies and adding a new docker-compose file consistent with recent updates.
 
-I built this out a few years ago to test drive the headless concept and to utilize a page-template-driven approach, which was not easily done at the time in NextJS.
+
 
 WordPress, MySQL, PHP, and PHPMyAdmin are provided by Docker which makes it easy to spin up new WP sites for both local development and production. No need for MAMP, XAMPP, etc!
 
