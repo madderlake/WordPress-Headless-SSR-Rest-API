@@ -26,9 +26,9 @@
     "superagent-promise": "^1.1.0"
   },
   "scripts": {
-    "build-css": "sass --no-source-map --style=compressed src:src src/styles/scss/styles.scss:src/index.css",
-    "watch:sass": "sass --no-source-map -w  src:src",
-    "start": "npm-run-all -p serve watch:sass start-js",
+    "build-css": "sass --no-source-map --style=compressed src:src src/styles/scss/styles.scss:src/index.css ../api/wp-content/themes/rest-api/blocks/**/*.scss:../api/wp-content/themes/rest-api/blocks/**/*.min.css ",
+    "watch:sass": "sass --no-source-map -w  src:src ../api/wp-content/themes/rest-api/blocks/:../api/wp-content/themes/rest-api/blocks/",
+    "start": "NODE_ENV=development npm-run-all -p serve watch:sass start-js",
     "build": "npm-run-all build-css build-js",
     "start-js": "react-scripts start",
     "serve": "node ssr-init",

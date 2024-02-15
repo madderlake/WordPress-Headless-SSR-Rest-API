@@ -1,12 +1,12 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import Loadable from "react-loadable";
-import { Provider } from "react-redux";
-import { BrowserRouter as Router } from "react-router-dom";
-import configureStore from "./store";
-import App from "./App";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Loadable from 'react-loadable';
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
+import configureStore from './store';
+import App from './App';
 
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === 'production') {
   const store = configureStore(window.PAGE_STATE || {});
 
   window.onload = () => {
@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === "production") {
             <App />
           </Router>
         </Provider>,
-        document.getElementById("root")
+        document.getElementById('root')
       );
     });
   };
@@ -31,6 +31,6 @@ if (process.env.NODE_ENV === "production") {
       </Router>
     </Provider>,
 
-    document.getElementById("root")
+    document.getElementById('root')
   );
 }

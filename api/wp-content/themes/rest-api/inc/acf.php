@@ -56,23 +56,23 @@ add_action('acf/input/admin_enqueue_scripts', 'custom_acf_enqueue_scripts');
  * @link https://www.billerickson.net/building-gutenberg-block-acf/#register-block
  *
  */
-function be_register_blocks() {
+// function be_register_blocks() {
 
-	if( ! function_exists( 'acf_register_block_type' ) )
-		return;
+// 	if( ! function_exists( 'acf_register_block_type' ) )
+// 		return;
 
-	acf_register_block_type( array(
-		'name'			=> 'product-ui',
-		'title'			=> __( 'Product UI', 'clientname' ),
-		'render_template'	=> 'partials/block-prod-ui.php',
-		'category'		=> 'formatting',
-		'icon'			=> 'admin-users',
-		'mode'			=> 'auto',
-		'keywords'		=> array( 'profile', 'user', 'author' )
-	));
+// 	acf_register_block_type( array(
+// 		'name'			=> 'product-ui',
+// 		'title'			=> __( 'Product UI', 'clientname' ),
+// 		'render_template'	=> 'partials/block-prod-ui.php',
+// 		'category'		=> 'formatting',
+// 		'icon'			=> 'admin-users',
+// 		'mode'			=> 'auto',
+// 		'keywords'		=> array( 'profile', 'user', 'author' )
+// 	));
 
-}
-add_action('acf/init', 'be_register_blocks' );
+// }
+// add_action('acf/init', 'be_register_blocks' );
 
 /**
  * Custom JS for WP ACF Admin
