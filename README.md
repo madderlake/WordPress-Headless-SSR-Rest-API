@@ -17,7 +17,7 @@ The React app relies on a `.env` file to configure itself to its environment, an
 
 ### [](#docker)Docker
 
-Make sure you have Docker installed locally. then `cd` to the `/api` directory to duplicate and rename `docker-compose.yml.example`, which has been updated with the latest changes in Docker Compose. Edit `api/docker-compose.yml` to link your local filesystem with Docker's WordPress files, as follows:
+Make sure you have Docker Desktop installed locally. Then `cd` to the `/api` directory to duplicate and rename `docker-compose.yml.example`, which has been updated with the latest changes in Docker Compose. Edit `api/docker-compose.yml` to link your local filesystem with Docker's WordPress files, as follows:
 
 **NOTE:** Change the path located _before_ the colon. In this case, replace `~/www/mah-wp-rest` with your install directory if you have changed the root directory name.
 
