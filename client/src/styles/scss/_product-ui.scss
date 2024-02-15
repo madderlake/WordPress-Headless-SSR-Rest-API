@@ -1,0 +1,191 @@
+@import '../../../../api/wp-content/themes/rest-api/blocks/product-ui/product-ui';
+// $text-color: rgba(255, 255, 255, 0.8);
+// .product-ui {
+//   overflow: hidden;
+//   background-color: #4a154b;
+//   min-height: 400px;
+//   display: flex;
+
+//   a,
+//   span,
+//   p,
+//   li,
+//   h4,
+//   h5 {
+//     font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+//     font-weight: normal;
+//   }
+// }
+// .channel {
+//   &:before {
+//     content: '#';
+//     margin-right: 0.25rem;
+//   }
+// }
+// .private {
+//   &:before {
+//     font-family: 'foundation-icons';
+//     font-style: normal;
+//     font-weight: normal;
+//     font-variant: normal;
+//     text-transform: none;
+//     line-height: 1;
+//     -webkit-font-smoothing: antialiased;
+//     display: inline-block;
+//     text-decoration: inherit;
+//     content: '\f16a';
+//     margin-right: 0.25rem;
+//     color: black;
+//   }
+// }
+// .dmsg {
+//   &:before {
+//     content: '';
+//     margin-right: 0.5rem;
+//     //margin-left: 1rem;
+//     height: 10px;
+//     width: 10px;
+//     background-color: transparent;
+//     border-radius: 50%;
+//     border: 1px solid black;
+//     display: inline-block;
+//   }
+//   &.active:before {
+//     background-color: #4c9689;
+//     border: 1px solid #4c9689;
+//   }
+// }
+// .pui-sidebar {
+//   //background-color: #4a154b;
+//   min-width: 25%;
+//   height: auto;
+//   color: $text-color;
+//   padding: 0;
+
+//   h4 {
+//     color: $text-color !important;
+//     font-size: 1rem !important;
+//     font-weight: normal;
+//     line-height: 1 !important;
+//     margin: 1em 0 0 0 !important;
+//     margin-left: 1rem !important;
+//   }
+
+//   .sidebar-list {
+//     list-style-type: none;
+//     padding: 1rem 0;
+//     margin: 0;
+
+//     li {
+//       &:before {
+//         content: '';
+//         margin-right: 0.35rem;
+//         margin-left: 1rem;
+//       }
+//       &.channel {
+//         &:before {
+//           content: '#';
+//         }
+//       }
+//       &.dmsg {
+//         &:before {
+//           content: '';
+//           margin-right: 0.5rem;
+//           margin-left: 1rem;
+//           height: 10px;
+//           width: 10px;
+//           background-color: transparent;
+//           border-radius: 50%;
+//           border: 1px solid white;
+//           display: inline-block;
+//         }
+//       }
+//       &.slackbot {
+//         &:before {
+//           color: #4c9689;
+//           content: '\f159';
+//           font-family: 'foundation-icons';
+//           font-style: normal;
+//           font-weight: normal;
+//           font-variant: normal;
+//           text-transform: none;
+//           line-height: 1;
+//           -webkit-font-smoothing: antialiased;
+//           display: inline-block;
+//           text-decoration: inherit;
+//         }
+//       }
+//       &.private {
+//         &:before {
+//           font-family: 'foundation-icons';
+//           font-style: normal;
+//           font-weight: normal;
+//           font-variant: normal;
+//           text-transform: none;
+//           line-height: 1;
+//           -webkit-font-smoothing: antialiased;
+//           display: inline-block;
+//           text-decoration: inherit;
+//           content: '\f16a';
+//           margin-right: 0.25rem;
+//           color: white;
+//         }
+//       }
+//       &.selected {
+//         color: white;
+//         background-color: #4c9689;
+//       }
+//       &.unread {
+//         color: white;
+//         font-weight: 700;
+//       }
+//       &.active:before {
+//         background-color: #4c9689;
+//         border: 1px solid #4c9689;
+//       }
+//     }
+//   }
+// }
+// .pui-messages {
+//   min-height: 400px;
+//   background-color: #fdfdfd;
+//   display: flex;
+//   flex-direction: column;
+
+//   .msg-header {
+//     padding: 1rem;
+//     padding-top: 0.5rem;
+
+//     h5 {
+//       font-weight: 600;
+//       margin-top: 0;
+//       margin-bottom: 1rem;
+//     }
+//   }
+//   .message-wrapper {
+//     display: flex;
+//     flex-basis: 100%;
+//   }
+//   .avatar {
+//     width: 50px;
+//     margin: 10px 15px 10px 0;
+//   }
+//   .avatar-name {
+//     font-weight: 700;
+//     display: inline-block;
+//     margin-right: 1rem;
+//   }
+//   .msg-time {
+//     color: #999;
+//     font-size: 75%;
+//   }
+// }
+
+// //Editor
+
+// .editor-styles-wrapper p {
+//   font-size: 1rem !important;
+//   margin-top: 0.75rem !important;
+//   margin-bottom: 1rem !important;
+//   line-height: 1.25 !important;
+// }

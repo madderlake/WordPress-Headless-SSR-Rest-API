@@ -9,24 +9,27 @@ const Columns = (props) => {
   const section = props.section;
   const colGroup = props.columns;
 
-  const getCols = Object.entries(colGroup).map((item, index) => {
+  const allColumns = Object.entries(colGroup).map((item, index) => {
     const col = item[1][0];
-    if (col === undefined) return;
-    const desktopWidth = col !== undefined && col.width.desktop;
-    const tabletWidth = col !== undefined && col.width.tablet;
-    const phoneWidth = col !== undefined && col.width.phone;
-    //const colClass = col.class;
+    if (col !== undefined) {
+      const desktopWidth = col.width.desktop;
+      const tabletWidth = col.width.tablet;
+      const phoneWidth = col.width.phone;
+      //const colClass = col.class;
 
-    return (
-      <Col
-        key={`col-${index}`}
-        sm={phoneWidth}
-        md={tabletWidth}
-        lg={desktopWidth}
-        className={`column`}>
-        <ContentBlock content={col.content} />
-      </Col>
-    );
+      return (
+        <Col
+          key={`col-${index}`}
+          sm={phoneWidth}
+          md={tabletWidth}
+          lg={desktopWidth}
+          className={`column`}>
+          <ContentBlock content={col.content} />
+        </Col>
+      );
+    } else {
+      return null;
+    }
   });
 
   return (
@@ -34,7 +37,7 @@ const Columns = (props) => {
       className={`column-wrap ${section.section_class}`}
       section={section}>
       <Container className={`column-wrap`}>
-        <Row>{getCols}</Row>
+        <Row>{allColumns}</Row>
       </Container>
     </Section>
   );

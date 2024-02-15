@@ -1,0 +1,15 @@
+{
+  "name": "acf/product-ui",
+  "title": "Product UI",
+  "description": "A product UI POC.",
+  "style": ["file:./product-ui.css"],
+  "category": "widget",
+  "align": false,
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "product-ui.php"
+  },
+  "supports": {
+    "anchor": true
+  }
+}

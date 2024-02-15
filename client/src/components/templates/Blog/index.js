@@ -1,7 +1,5 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect, Fragment, useCallback } from 'react';
 import { Container, Row, Col } from 'reactstrap';
-//import ContentBlock from '../../utilities/ContentBlock';
-//import FlexContent from '../FlexContent';
 import { API_ROOT } from '../../../api';
 import superagent from 'superagent';
 import SidebarContent from '../../layout/Sidebar/Sidebar';
@@ -16,15 +14,16 @@ const Blog = (props) => {
   });
   const type = props.slug === 'blog' ? 'posts' : props.type;
   const url = `${API_ROOT}/wp-json/wp/v2/${type}/?_embed`;
-  const fetchPosts = () => {
+  const fetchPosts = useCallback(() => {
     superagent
       .get(url)
       .then((res) => res.body)
       .then((posts) => setAppState({ loading: false, posts: posts }));
-  };
+  }, [url]);
+
   useEffect(() => {
     fetchPosts();
-  }, [setAppState]);
+  }, [setAppState, fetchPosts]);
 
   if (props.data) {
     const { sidebar_content } = props.data.acf;

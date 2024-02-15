@@ -27,4 +27,7 @@ require_once('inc/custom-post-types.php');
 // Theme setup
 require_once('inc/theme-setup.php');
 
+// Theme setup
+require_once('inc/blocks.php')
+
 ?>

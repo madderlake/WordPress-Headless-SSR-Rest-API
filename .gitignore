@@ -1,3 +1,8 @@
+# Wordpress
+
+api/wp-content/themes/twentytwenty/
+api/wp-content/themes/twentytwentythree/
+
 # Mac garbage files
 .DS_Store
 
@@ -71,7 +76,7 @@ api/wp-config.php
 client/build
 
 
-# ignore WP 
+# ignore WP
 api/wp-admin
 api/wp-content/index.php
 api/wp-content/debug.log
