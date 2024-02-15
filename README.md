@@ -1,4 +1,4 @@
-# [](#server-side-rendered--code-split-react--WordPress-rest-api---built-by-keen-wip)SSR / React Code Split + WordPress REST API (WIP)
+# [](#server-side-rendered--code-split-react--WordPress-rest-api---built-by-keen-wip)SSR / React Code Split + Headless WordPress + REST API (WIP)
 
 This repo is based on a [boilerplate](https://github.com/trouble/react-wp-rest) for pairing the WP Rest API with a server-side rendered and code-split React client, built by Keen Studios. I recently resurrected it by updating dependencies and adding a new docker-compose file consistent with recent updates.
 
