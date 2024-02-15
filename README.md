@@ -81,9 +81,7 @@ As noted above, I wanted to be able to duplicate and expand on my extensive work
 
 The `ACF to API` plugin adds an `acf` endpoint to the API, enabling the ACF templates to grab the data they need.
 
-**Update:** For this theme, the REST API works well. I have looked at using GraphQL, but the queries become quite complex because of the nature of the fields in ACF.
-
-Hitting the `acf` endpoint makes it possible to grab all the layouts and their fields and sub-fields without explicitly requesting them. Since we are caching the API responses, this is sufficient at the moment.
+**Update:** For this theme, the REST API works well. I have looked at using GraphQL, but the queries become quite complex because of the nature of the fields in ACF. Hitting the `acf` endpoint makes it possible to grab all the layouts and their fields and sub-fields without explicitly requesting them. Since we are caching the API responses, this is sufficient at the moment.
 
 I am currently (as of Jan 2024) building out a new headless instance using NextJS 14, which renders React Server components by default, making GraphQL less necessary.
 
