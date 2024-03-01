@@ -1,6 +1,6 @@
 # [](#server-side-rendered--code-split-react--WordPress-rest-api---built-by-keen-wip)SSR / React Code Split + WordPress REST API
 
-This repo is based on a boilerplate for pairing the WP Rest API with a server-side rendered and code-split React client, built by [Keen](https://keen-studio.com). I recently resurrected it, updating dependencies and the docker-compose file.
+This repo is based on a [boilerplate](https://github.com/trouble/react-wp-rest) for pairing the WP Rest API with a server-side rendered and code-split React client, built by Keen Studios. I recently resurrected it by updating dependencies and adding a new docker-compose file consistent with recent updates.
 
 I built this out a few years ago to test drive the headless concept and to utilize a page-template-driven approach, which was not easily done at the time in NextJS.
 
@@ -33,7 +33,7 @@ Go through the steps to install WordPress and confirm that you can log into the 
 - You can reach `PhpMyAdmin` at the port specified in the YML file if you need to import another database
 - To clean up your local environment, you can update the volumes in the YML file to map only the `wp-content` directory:
   ` volumes:
-    - ./wp-content:/var/www/html/wp-content`
+  - ./wp-content:/var/www/html/wp-content`
 
 ## [](#WordPress-configuration)WordPress Configuration
 
